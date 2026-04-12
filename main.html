@@ -25,8 +25,13 @@
   </script>
   <style>
     body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       transition: background-color 0.3s, color 0.3s;
       scroll-behavior: smooth;
+    }
+    h1, h2, h3 {
+      text-wrap: balance;
     }
     .grid-bg {
       background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
@@ -75,10 +80,10 @@
       </div>
       
       <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
-        <a href="#philosophy" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 transition-colors" data-i18n="nav-philosophy">Philosophy</a>
-        <a href="#paradigm" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 transition-colors" data-i18n="nav-paradigm">Paradigm</a>
+        <a href="#solutions" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 transition-colors" data-i18n="nav-solutions">Solutions</a>
+        <a href="#industries" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 transition-colors" data-i18n="nav-industries">Industries</a>
+        <a href="#capabilities" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 transition-colors" data-i18n="nav-capabilities">Capabilities</a>
         <a href="#demo" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 transition-colors" data-i18n="nav-demo">Execution</a>
-        <a href="#scenarios" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 transition-colors" data-i18n="nav-scenarios">Scenarios</a>
       </div>
 
       <div class="flex items-center space-x-6">
@@ -107,10 +112,10 @@
   <!-- 移动端菜单 -->
   <div id="mobile-menu" class="fixed inset-0 z-40 bg-white dark:bg-slate-950 transform translate-x-full transition-transform duration-300 md:hidden pt-24 px-6">
     <div class="flex flex-col space-y-6 text-lg font-medium">
-      <a href="#philosophy" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-philosophy">Philosophy</a>
-      <a href="#paradigm" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-paradigm">Paradigm</a>
+      <a href="#solutions" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-solutions">Solutions</a>
+      <a href="#industries" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-industries">Industries</a>
+      <a href="#capabilities" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-capabilities">Capabilities</a>
       <a href="#demo" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-demo">Execution</a>
-      <a href="#scenarios" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-scenarios">Scenarios</a>
       
       <!-- 移动端语言切换 -->
       <div class="pt-8 border-t border-slate-200 dark:border-slate-800">
@@ -131,7 +136,7 @@
         <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
         <span data-i18n="hero-tag">DETERMINISTIC VALIDATION ACTIVE</span>
       </div>
-      <h1 class="text-3xl md:text-5xl font-bold tracking-tight mb-6 max-w-4xl text-slate-900 dark:text-white" data-i18n="hero-title">
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 max-w-4xl text-slate-900 dark:text-white" data-i18n="hero-title">
         Executable Validation Platform for Safety-Critical Embedded Systems
       </h1>
       <p class="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mb-12 leading-relaxed" data-i18n="hero-subtitle">
@@ -231,44 +236,162 @@
   <!-- Problem Section -->
   <section id="problem" class="py-24 px-6 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/20">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-[10px] font-mono text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] mb-8" data-i18n="prob-tag">The Problem</h2>
-      <p class="text-2xl md:text-3xl font-bold leading-tight tracking-tight text-slate-900 dark:text-white mb-8" data-i18n="prob-title">
+      <h2 class="text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mb-6" data-i18n="prob-tag">The Problem</h2>
+      <p class="text-2xl md:text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white mb-8" data-i18n="prob-title">
         Validation today is fragmented, manual, and non-deterministic.
       </p>
-      <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed" data-i18n="prob-desc">
+      <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed" data-i18n="prob-desc">
         Engineers struggle to trace system behavior back to requirements, especially in complex multi-signal environments. Traditional testing validates code — not real system behavior.
       </p>
     </div>
   </section>
 
-  <!-- Solution Section -->
-  <section id="solution" class="py-24 px-6 border-t border-slate-200 dark:border-slate-800">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-[10px] font-mono text-blue-500 uppercase tracking-[0.3em] mb-8" data-i18n="sol-tag">The Solution</h2>
-      <p class="text-3xl md:text-4xl font-bold mb-8 leading-tight tracking-tight text-slate-900 dark:text-white" data-i18n="sol-title">
-        VeriAI transforms natural language requirements into executable validation.
-      </p>
-      <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed" data-i18n="sol-desc">
-        Instead of testing implementations, we validate system behavior directly. Deterministic rules, real-time signals, and full traceability — in one unified platform.
-      </p>
-      <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mt-4" data-i18n="sol-ai-desc">
-        Requirements written in natural language are parsed into structured DSL rules through controlled transformation logic, enabling direct validation of real-world system behavior.
-      </p>
-      <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mt-4" data-i18n="sol-opt-desc">
-        A metrics-driven optimization engine automatically selects which validations to re-execute — targeting 30–50% reduction in execution cost while retaining critical defect detection.
-      </p>
-      <!-- Trust Anchor -->
+  <!-- Solutions Section -->
+  <section id="solutions" class="py-24 px-6 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-14 max-w-2xl">
+        <h2 class="text-xs font-mono font-semibold text-blue-500 uppercase tracking-[0.2em] mb-6" data-i18n="sol2-tag">Solutions</h2>
+        <p class="text-3xl md:text-4xl font-extrabold mb-4 leading-tight tracking-tight text-slate-900 dark:text-white" data-i18n="sol2-heading">
+          Structured validation for engineering teams.
+        </p>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="sol2-sub">
+          From natural language requirement to verified system behavior — without ambiguity.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200 dark:divide-slate-800 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden">
+        <div class="p-10 bg-white dark:bg-slate-900/40">
+          <div class="text-[11px] font-mono font-bold text-blue-500 uppercase tracking-widest mb-6">01</div>
+          <h3 class="text-base font-bold mb-3 text-slate-900 dark:text-white" data-i18n="sol2-step1-title">Natural Language Requirements</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="sol2-step1-desc">Describe expected system behavior in plain language — English, German, or Chinese. No formal specification syntax required from the engineer.</p>
+        </div>
+        <div class="p-10 bg-white dark:bg-slate-900/40">
+          <div class="text-[11px] font-mono font-bold text-blue-500 uppercase tracking-widest mb-6">02</div>
+          <h3 class="text-base font-bold mb-3 text-slate-900 dark:text-white" data-i18n="sol2-step2-title">Structured DSL Transformation</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="sol2-step2-desc">Requirements are parsed into deterministic DSL rules through controlled transformation logic. No ambiguity, no interpretation gaps, no black-box processing.</p>
+        </div>
+        <div class="p-10 bg-white dark:bg-slate-900/40">
+          <div class="text-[11px] font-mono font-bold text-blue-500 uppercase tracking-widest mb-6">03</div>
+          <h3 class="text-base font-bold mb-3 text-slate-900 dark:text-white" data-i18n="sol2-step3-title">Deterministic Validation</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="sol2-step3-desc">Rules execute against real-world signal data — CAN, CSV, UART. Every validation produces a traceable, reproducible result with full audit trail.</p>
+        </div>
+      </div>
+
       <p class="text-xs font-mono text-slate-400 mt-10" data-i18n="sol-trust-anchor">
         Designed for real-world signal validation environments (CAN, Ethernet, Analog)
       </p>
     </div>
   </section>
 
+  <!-- Industries Section -->
+  <section id="industries" class="py-24 px-6 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/20">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-14">
+        <h2 class="text-xs font-mono font-semibold text-blue-500 uppercase tracking-[0.2em] mb-6" data-i18n="ind-tag">Industries</h2>
+        <p class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white" data-i18n="ind-heading">
+          Built for teams where validation precision matters.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-xl p-8">
+          <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center mb-6 text-blue-600">
+            <i data-lucide="car" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold mb-3 text-slate-900 dark:text-white" data-i18n="ind-1-title">Automotive</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5" data-i18n="ind-1-desc">Validation of ADAS, powertrain, and CAN bus signal behavior against timing and safety requirements.</p>
+          <p class="text-[10px] font-mono text-slate-400 uppercase tracking-widest border-t border-slate-200 dark:border-slate-800 pt-4">CAN · DBC · Signal timing</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-xl p-8">
+          <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center mb-6 text-blue-600">
+            <i data-lucide="cpu" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold mb-3 text-slate-900 dark:text-white" data-i18n="ind-2-title">Embedded Systems</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5" data-i18n="ind-2-desc">ECU behavior verification across multi-protocol signal domains, including CAN, UART, and analog interfaces.</p>
+          <p class="text-[10px] font-mono text-slate-400 uppercase tracking-widest border-t border-slate-200 dark:border-slate-800 pt-4">ECU · HIL · SIL</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-xl p-8">
+          <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center mb-6 text-blue-600">
+            <i data-lucide="shield-alert" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold mb-3 text-slate-900 dark:text-white" data-i18n="ind-3-title">Safety-Critical Systems</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5" data-i18n="ind-3-desc">Fail-safe state validation and hazard mitigation logic verification for systems requiring high behavioral confidence.</p>
+          <p class="text-[10px] font-mono text-slate-400 uppercase tracking-widest border-t border-slate-200 dark:border-slate-800 pt-4">Fail-safe · Deterministic</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-xl p-8">
+          <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center mb-6 text-blue-600">
+            <i data-lucide="settings" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold mb-3 text-slate-900 dark:text-white" data-i18n="ind-4-title">Industrial Control</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5" data-i18n="ind-4-desc">PLC and control system behavioral validation against timing specifications and multi-signal interaction rules.</p>
+          <p class="text-[10px] font-mono text-slate-400 uppercase tracking-widest border-t border-slate-200 dark:border-slate-800 pt-4">PLC · Control logic</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities Section -->
+  <section id="capabilities" class="py-24 px-6 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/20">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-14">
+        <h2 class="text-xs font-mono font-semibold text-blue-500 uppercase tracking-[0.2em] mb-6" data-i18n="cap-tag">Capabilities</h2>
+        <p class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white" data-i18n="cap-heading">
+          Engineering-grade validation infrastructure.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div class="flex gap-6">
+          <div class="w-10 h-10 shrink-0 bg-blue-600/10 rounded-lg flex items-center justify-center text-blue-600">
+            <i data-lucide="cpu" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold mb-2 text-slate-900 dark:text-white" data-i18n="cap-1-title">Deterministic Validation Engine</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="cap-1-desc">Every rule evaluation produces the same result given the same input. No probabilistic behavior, no runtime variance. Suitable for safety-critical environments.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="w-10 h-10 shrink-0 bg-blue-600/10 rounded-lg flex items-center justify-center text-blue-600">
+            <i data-lucide="activity" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold mb-2 text-slate-900 dark:text-white" data-i18n="cap-2-title">Signal-Based Rule Evaluation</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="cap-2-desc">Validation rules operate directly on signal timelines — CAN, CSV, UART — not on code or test stubs. Real system behavior is the ground truth.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="w-10 h-10 shrink-0 bg-blue-600/10 rounded-lg flex items-center justify-center text-blue-600">
+            <i data-lucide="hard-drive" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold mb-2 text-slate-900 dark:text-white" data-i18n="cap-3-title">Local Execution</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="cap-3-desc">The platform runs entirely on-premise. No cloud dependency, no data transmission, no external services required. Your signal data stays within your environment.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="w-10 h-10 shrink-0 bg-blue-600/10 rounded-lg flex items-center justify-center text-blue-600">
+            <i data-lucide="repeat" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold mb-2 text-slate-900 dark:text-white" data-i18n="cap-4-title">Reproducible Validation Workflows</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="cap-4-desc">Baseline and optimized runs produce comparable, auditable results. Full trace for every pass/fail decision — from signal trigger to final verdict.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Mission Statement Section -->
   <section class="py-24 px-6 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/20">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-[10px] font-mono text-blue-500 uppercase tracking-[0.3em] mb-8" data-i18n="mission-tag">Mission</h2>
-      <p class="text-2xl md:text-3xl font-bold leading-tight tracking-tight text-slate-900 dark:text-white" data-i18n="mission-title">
+      <h2 class="text-xs font-mono font-semibold text-blue-500 uppercase tracking-[0.2em] mb-6" data-i18n="mission-tag">Mission</h2>
+      <p class="text-2xl md:text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white" data-i18n="mission-title">
         Our mission is to redefine how system behavior is validated. From fragmented testing to deterministic verification.
       </p>
     </div>
@@ -278,18 +401,18 @@
   <section id="philosophy" class="py-24 px-6 border-t border-slate-200 dark:border-slate-800">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-sm font-mono text-blue-500 uppercase tracking-[0.3em] mb-8" data-i18n="phil-tag">Engineering Philosophy</h2>
-      <p class="text-3xl md:text-4xl font-bold mb-8 leading-tight tracking-tight text-slate-900 dark:text-white" data-i18n="phil-title">
+      <p class="text-3xl md:text-4xl font-extrabold mb-8 leading-tight tracking-tight text-slate-900 dark:text-white" data-i18n="phil-title">
         Modern systems are defined by behavior, not code.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left mt-16">
         <div class="space-y-4">
-          <h3 class="text-lg font-bold text-slate-400 uppercase tracking-widest text-[12px]" data-i18n="phil-left-tag">Traditional Testing</h3>
+          <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-[0.2em]" data-i18n="phil-left-tag">Traditional Testing</h3>
           <p class="text-slate-600 dark:text-slate-500 text-sm leading-relaxed" data-i18n="phil-left-desc">
             Validates specific implementations and unit-level functions. Often disconnected from high-level system requirements, leading to coverage gaps in complex interactions.
           </p>
         </div>
         <div class="space-y-4">
-          <h3 class="text-lg font-bold text-blue-500 uppercase tracking-widest text-[12px]" data-i18n="phil-right-tag">VeriAI Paradigm</h3>
+          <h3 class="text-xs font-semibold text-blue-500 uppercase tracking-[0.2em]" data-i18n="phil-right-tag">VeriAI Paradigm</h3>
           <p class="text-slate-800 dark:text-slate-300 text-sm leading-relaxed font-medium" data-i18n="phil-right-desc">
             Validates system-level behavior defined directly by requirements. We provide the deterministic engine that ensures the "physical world" behaves exactly as specified in the "rule world."
           </p>
@@ -630,10 +753,42 @@
 
     const translations = {
       en: {
+        "nav-solutions": "Solutions",
+        "nav-industries": "Industries",
+        "nav-capabilities": "Capabilities",
         "nav-philosophy": "Philosophy",
         "nav-paradigm": "Paradigm",
         "nav-demo": "Execution",
         "nav-scenarios": "Scenarios",
+        "sol2-tag": "Solutions",
+        "sol2-heading": "Structured validation for engineering teams.",
+        "sol2-sub": "From natural language requirement to verified system behavior — without ambiguity.",
+        "sol2-step1-title": "Natural Language Requirements",
+        "sol2-step1-desc": "Describe expected system behavior in plain language — English, German, or Chinese. No formal specification syntax required from the engineer.",
+        "sol2-step2-title": "Structured DSL Transformation",
+        "sol2-step2-desc": "Requirements are parsed into deterministic DSL rules through controlled transformation logic. No ambiguity, no interpretation gaps, no black-box processing.",
+        "sol2-step3-title": "Deterministic Validation",
+        "sol2-step3-desc": "Rules execute against real-world signal data — CAN, CSV, UART. Every validation produces a traceable, reproducible result with full audit trail.",
+        "ind-tag": "Industries",
+        "ind-heading": "Built for teams where validation precision matters.",
+        "ind-1-title": "Automotive",
+        "ind-1-desc": "Validation of ADAS, powertrain, and CAN bus signal behavior against timing and safety requirements.",
+        "ind-2-title": "Embedded Systems",
+        "ind-2-desc": "ECU behavior verification across multi-protocol signal domains, including CAN, UART, and analog interfaces.",
+        "ind-3-title": "Safety-Critical Systems",
+        "ind-3-desc": "Fail-safe state validation and hazard mitigation logic verification for systems requiring high behavioral confidence.",
+        "ind-4-title": "Industrial Control",
+        "ind-4-desc": "PLC and control system behavioral validation against timing specifications and multi-signal interaction rules.",
+        "cap-tag": "Capabilities",
+        "cap-heading": "Engineering-grade validation infrastructure.",
+        "cap-1-title": "Deterministic Validation Engine",
+        "cap-1-desc": "Every rule evaluation produces the same result given the same input. No probabilistic behavior, no runtime variance. Suitable for safety-critical environments.",
+        "cap-2-title": "Signal-Based Rule Evaluation",
+        "cap-2-desc": "Validation rules operate directly on signal timelines — CAN, CSV, UART — not on code or test stubs. Real system behavior is the ground truth.",
+        "cap-3-title": "Local Execution",
+        "cap-3-desc": "The platform runs entirely on-premise. No cloud dependency, no data transmission, no external services required. Your signal data stays within your environment.",
+        "cap-4-title": "Reproducible Validation Workflows",
+        "cap-4-desc": "Baseline and optimized runs produce comparable, auditable results. Full trace for every pass/fail decision — from signal trigger to final verdict.",
         "hero-tag": "DETERMINISTIC VALIDATION ACTIVE",
         "hero-title": "Executable Validation Platform for Safety-Critical Embedded Systems",
         "hero-subtitle": "Transform natural language requirements into deterministic validation. From DSL to real-world signal behavior.",
@@ -739,10 +894,42 @@
         "footer-legal-hint": "This website presents a prototype engineering system under active development."
       },
       de: {
+        "nav-solutions": "Lösungen",
+        "nav-industries": "Branchen",
+        "nav-capabilities": "Fähigkeiten",
         "nav-philosophy": "Philosophie",
         "nav-paradigm": "Paradigma",
         "nav-demo": "Ausführung",
         "nav-scenarios": "Szenarien",
+        "sol2-tag": "Lösungen",
+        "sol2-heading": "Strukturierte Validierung für Engineering-Teams.",
+        "sol2-sub": "Von der natürlichsprachlichen Anforderung zum verifizierten Systemverhalten — ohne Mehrdeutigkeit.",
+        "sol2-step1-title": "Natürlichsprachliche Anforderungen",
+        "sol2-step1-desc": "Beschreiben Sie das erwartete Systemverhalten in einfacher Sprache — Englisch, Deutsch oder Chinesisch. Keine formale Spezifikationssyntax erforderlich.",
+        "sol2-step2-title": "Strukturierte DSL-Transformation",
+        "sol2-step2-desc": "Anforderungen werden durch kontrollierte Transformationslogik in deterministische DSL-Regeln geparst. Keine Mehrdeutigkeit, keine Interpretationslücken, keine Blackbox-Verarbeitung.",
+        "sol2-step3-title": "Deterministische Validierung",
+        "sol2-step3-desc": "Regeln werden gegen reale Signaldaten ausgeführt — CAN, CSV, UART. Jede Validierung liefert ein rückverfolgbares, reproduzierbares Ergebnis mit vollständigem Audit-Trail.",
+        "ind-tag": "Branchen",
+        "ind-heading": "Für Teams, bei denen Validierungspräzision entscheidend ist.",
+        "ind-1-title": "Automotive",
+        "ind-1-desc": "Validierung von ADAS-, Antriebsstrang- und CAN-Bus-Signalverhalten gegen Zeit- und Sicherheitsanforderungen.",
+        "ind-2-title": "Eingebettete Systeme",
+        "ind-2-desc": "ECU-Verhaltensverifikation über mehrere Protokolldomänen, einschließlich CAN, UART und analoge Schnittstellen.",
+        "ind-3-title": "Sicherheitskritische Systeme",
+        "ind-3-desc": "Fail-Safe-Zustandsvalidierung und Verifizierung der Risikominderungslogik für Systeme mit hohen Verhaltensanforderungen.",
+        "ind-4-title": "Industriesteuerung",
+        "ind-4-desc": "Verhaltensvalidierung von SPS- und Steuerungssystemen gegen Zeitspezifikationen und Multisignal-Interaktionsregeln.",
+        "cap-tag": "Fähigkeiten",
+        "cap-heading": "Validierungsinfrastruktur auf Engineering-Niveau.",
+        "cap-1-title": "Deterministischer Validierungs-Engine",
+        "cap-1-desc": "Jede Regelauswertung liefert bei gleicher Eingabe dasselbe Ergebnis. Kein probabilistisches Verhalten, keine Laufzeitschwankungen. Geeignet für sicherheitskritische Umgebungen.",
+        "cap-2-title": "Signalbasierte Regelauswertung",
+        "cap-2-desc": "Validierungsregeln operieren direkt auf Signal-Timelines — CAN, CSV, UART — nicht auf Code oder Test-Stubs. Das reale Systemverhalten ist die Grundwahrheit.",
+        "cap-3-title": "Lokale Ausführung",
+        "cap-3-desc": "Die Plattform läuft vollständig On-Premise. Keine Cloud-Abhängigkeit, keine Datenübertragung, keine externen Dienste erforderlich. Ihre Signaldaten verbleiben in Ihrer Umgebung.",
+        "cap-4-title": "Reproduzierbare Validierungs-Workflows",
+        "cap-4-desc": "Baseline- und optimierte Durchläufe liefern vergleichbare, prüfbare Ergebnisse. Vollständiger Trace für jede Pass/Fail-Entscheidung — vom Signaltrigger bis zum endgültigen Verdict.",
         "hero-tag": "DETERMINISTISCHE VALIDIERUNG AKTIV",
         "hero-title": "Plattform für ausführbare Validierung sicherheitskritischer eingebetteter Systeme",
         "hero-subtitle": "Wandeln Sie natürlichsprachliche Anforderungen in deterministische Validierung um. Von der DSL zum realen Signalverhalten.",
@@ -848,6 +1035,9 @@
         "footer-legal-hint": "Diese Website präsentiert ein Prototyp-Engineering-System in aktiver Entwicklung."
       },
       zh: {
+        "nav-solutions": "解决方案",
+        "nav-industries": "行业",
+        "nav-capabilities": "能力",
         "nav-philosophy": "工程哲学",
         "nav-paradigm": "验证范式",
         "nav-demo": "执行演示",
@@ -872,6 +1062,35 @@
         "sol-title": "VeriAI 将自然语言需求转化为可执行的验证。",
         "sol-desc": "我们不测试实现，而是直接验证系统行为。确定性规则、实时信号和完整溯源 —— 集于一个统一平台。",
         "sol-ai-desc": "以自然语言编写的需求通过受控的转换逻辑解析为结构化的 DSL 规则，从而实现对真实世界系统行为的直接验证。",
+        "sol2-tag": "解决方案",
+        "sol2-heading": "面向工程团队的结构化验证。",
+        "sol2-sub": "三步工作流：从非结构化需求到可追溯的验证结果，无需手动脚本编写。",
+        "sol2-step1-title": "自然语言需求",
+        "sol2-step1-desc": "以自然语言或工程文档形式输入系统需求。支持纯文本、需求文档及规格说明书。",
+        "sol2-step2-title": "结构化 DSL 转换",
+        "sol2-step2-desc": "受控转换逻辑将需求解析为确定性 DSL 规则。无推测性 AI 生成 — 每条规则均可完整追溯。",
+        "sol2-step3-title": "确定性验证",
+        "sol2-step3-desc": "规则在真实信号数据上本地执行。每次验证输出 PASS/FAIL/UNKNOWN/FLAKY 以及可置信度评级。",
+        "ind-tag": "行业",
+        "ind-heading": "专为安全关键工程打造。",
+        "ind-1-title": "汽车电子",
+        "ind-1-desc": "CAN 总线、DBC 信号映射与 AUTOSAR 合规验证工作流，适用于 ECU 集成与系统级测试。",
+        "ind-2-title": "嵌入式系统",
+        "ind-2-desc": "HIL/SIL 测试环境的确定性验证。支持多信号时间轴重放与实时信号评估。",
+        "ind-3-title": "安全关键系统",
+        "ind-3-desc": "符合 ISO 26262 和 IEC 61508 流程要求的验证追溯性与审计就绪输出。",
+        "ind-4-title": "工业控制",
+        "ind-4-desc": "PLC 时序验证、传感器融合逻辑测试与工业通信协议的信号级验证。",
+        "cap-tag": "能力",
+        "cap-heading": "完整的验证工程平台。",
+        "cap-1-title": "确定性验证引擎",
+        "cap-1-desc": "基于规则的评估引擎，在真实信号数据上直接执行 DSL 规则。每次运行均可完整复现。",
+        "cap-2-title": "基于信号的规则评估",
+        "cap-2-desc": "跨时间窗口的多信号条件验证，支持 CAN 帧、CSV 时序数据与 UART 日志格式。",
+        "cap-3-title": "本地执行",
+        "cap-3-desc": "所有验证均在本地运行。无云端依赖，无遥测数据上传，完全符合安全关键环境的数据管控要求。",
+        "cap-4-title": "可复现的验证工作流",
+        "cap-4-desc": "基线运行与优化运行产出对等可比的结果，支持历史审计与回归分析。",
         "sol-trust-anchor": "专为真实信号验证环境（CAN、以太网、模拟信号）设计",
         "diag-dsl-title": "DSL: 核心交互界面",
         "diag-dsl-desc": "将需求转化为可执行逻辑的核心抽象层。",
