@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <script>(function(){if(localStorage.getItem('auth')!=='ok'){var d=location.pathname.split('/').filter(Boolean).length-1;location.replace('../'.repeat(d||1)+'index.html');}})()</script>
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.remove('dark');</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | VeriAI Systems</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], mono: ['JetBrains Mono','monospace'] } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body class="bg-white dark:bg-[#0a0f1a] text-slate-900 dark:text-slate-200 min-h-screen transition-colors duration-200">
+
+  <div id="navbar-slot"></div>
+
+  <main>
+    <!-- Page header -->
+    <header class="pt-28 pb-12 px-6 border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-xs font-mono text-blue-500 uppercase tracking-[0.2em] mb-4"
+           data-i18n="products-tag">Products</p>
+        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-3"
+            data-i18n="products-heading">Engineering Validation products.</h1>
+        <p class="text-sm text-slate-500 dark:text-slate-400 font-mono max-w-2xl leading-relaxed"
+           data-i18n="products-sub">
+          Signal-based validation tools for embedded systems teams.
+          Additional application domains are under evaluation for future releases.
+        </p>
+      </div>
+    </header>
+
+    <!-- Engineering domain -->
+    <div id="engineering-slot"></div>
+
+    <!-- Future applications -->
+    <div id="future-slot"></div>
+  </main>
+
+  <div id="footer-slot"></div>
+
+  <script src="../scripts/navigation.js"></script>
+  <script>
+    VeriAI.initPage({
+      auth: true,
+      sections: [
+        { slot: '#engineering-slot', src: 'sections/products-engineering.html' },
+        { slot: '#future-slot',      src: 'sections/future-applications.html' }
+      ]
+    });
+  </script>
+</body>
+</html>

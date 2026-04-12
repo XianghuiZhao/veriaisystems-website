@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <script>(function(){if(localStorage.getItem('auth')!=='ok'){var d=location.pathname.split('/').filter(Boolean).length-1;location.replace('../'.repeat(d||1)+'index.html');}})()</script>
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.remove('dark');</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log Replay &amp; Analysis | VeriAI Systems</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], mono: ['JetBrains Mono','monospace'] } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body class="bg-white dark:bg-[#0a0f1a] text-slate-900 dark:text-slate-200 min-h-screen transition-colors duration-200">
+
+  <div id="navbar-slot"></div>
+
+  <main>
+    <header class="pt-28 pb-16 px-6 border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-[10px] font-mono text-blue-400 uppercase tracking-widest
+                       px-2.5 py-1 border border-blue-500/30 rounded">
+            Engineering Validation
+          </span>
+        </div>
+        <div class="flex items-start gap-5 mb-6">
+          <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center
+                      text-blue-500 shrink-0 mt-1">
+            <i data-lucide="file-text" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 mb-3">
+              Log Replay &amp; Analysis
+            </h1>
+            <p class="text-sm text-slate-500 font-mono max-w-2xl leading-relaxed">
+              Replay CAN candump logs, CSV signal timelines, and UART traces against
+              DSL rule sets. Field incident analysis, regression testing, and
+              multi-source validation from a unified adapter framework.
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-3 flex-wrap">
+          <span class="text-[10px] font-mono text-slate-500 dark:text-slate-600 uppercase tracking-widest px-2 py-1 border border-slate-200 dark:border-slate-800 rounded">CAN</span>
+          <span class="text-[10px] font-mono text-slate-500 dark:text-slate-600 uppercase tracking-widest px-2 py-1 border border-slate-200 dark:border-slate-800 rounded">CSV</span>
+          <span class="text-[10px] font-mono text-slate-500 dark:text-slate-600 uppercase tracking-widest px-2 py-1 border border-slate-200 dark:border-slate-800 rounded">UART</span>
+          <span class="text-[10px] font-mono text-slate-500 dark:text-slate-600 uppercase tracking-widest px-2 py-1 border border-slate-200 dark:border-slate-800 rounded">Replay</span>
+          <span class="text-[10px] font-mono text-slate-500 dark:text-slate-600 uppercase tracking-widest px-2 py-1 border border-slate-200 dark:border-slate-800 rounded">Regression</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="py-16 px-6 border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-xs font-mono text-blue-500 uppercase tracking-[0.2em] mb-4">Overview</p>
+        <h2 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 mb-8">
+          Multi-source log ingestion with unified rule evaluation.
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl">
+            <p class="text-[10px] font-mono text-slate-500 dark:text-slate-600 uppercase tracking-widest mb-3">Input</p>
+            <p class="text-sm font-mono text-slate-700 dark:text-slate-300 font-bold mb-2">Recorded Data</p>
+            <p class="text-xs text-slate-500 font-mono leading-relaxed">
+              CAN candump files (+ DBC)<br>
+              CSV signal timelines<br>
+              UART log files
+            </p>
+          </div>
+          <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl">
+            <p class="text-[10px] font-mono text-slate-500 dark:text-slate-600 uppercase tracking-widest mb-3">Processing</p>
+            <p class="text-sm font-mono text-slate-700 dark:text-slate-300 font-bold mb-2">Unified Adapter + Engine</p>
+            <p class="text-xs text-slate-500 font-mono leading-relaxed">
+              All sources normalized to<br>
+              one frame format<br>
+              Same DSL rule evaluation
+            </p>
+          </div>
+          <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl">
+            <p class="text-[10px] font-mono text-slate-500 dark:text-slate-600 uppercase tracking-widest mb-3">Output</p>
+            <p class="text-sm font-mono text-slate-700 dark:text-slate-300 font-bold mb-2">Structured Verdicts</p>
+            <p class="text-xs text-slate-500 font-mono leading-relaxed">
+              PASS / FAIL / UNKNOWN / FLAKY<br>
+              Per-source verdict breakdown<br>
+              Full reproducible audit trail
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 px-6 border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-xs font-mono text-blue-500 uppercase tracking-[0.2em] mb-4">Capabilities</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="flex gap-4">
+            <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></div>
+            <div>
+              <p class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">CAN candump + DBC decoding</p>
+              <p class="text-xs text-slate-500 font-mono leading-relaxed">
+                Raw candump logs decoded using DBC signal definitions.
+                Physical values available directly in DSL rules.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></div>
+            <div>
+              <p class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">Unified frame format</p>
+              <p class="text-xs text-slate-500 font-mono leading-relaxed">
+                CAN, CSV, and UART sources normalized into one adapter-agnostic frame
+                structure. One rule set runs across all sources.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></div>
+            <div>
+              <p class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">Validation optimization</p>
+              <p class="text-xs text-slate-500 font-mono leading-relaxed">
+                Baseline run metrics drive selective re-execution. Only changed
+                or at-risk validations are re-run in subsequent passes.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></div>
+            <div>
+              <p class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">Reproducible replay</p>
+              <p class="text-xs text-slate-500 font-mono leading-relaxed">
+                Identical log file produces identical verdict output on every replay.
+                Deterministic behavior guaranteed regardless of execution environment.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 px-6 border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-xs font-mono text-blue-500 uppercase tracking-[0.2em] mb-4">Use Cases</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl">
+            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">Field incident analysis</p>
+            <p class="text-xs text-slate-500 font-mono leading-relaxed">
+              Replay CAN logs from field incidents against behavioral rules.
+              Identify root cause of failures without recreating the scenario.
+            </p>
+          </div>
+          <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl">
+            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">Regression testing</p>
+            <p class="text-xs text-slate-500 font-mono leading-relaxed">
+              Re-run recorded test drives against updated rule sets.
+              Detect behavioral regressions introduced by ECU software changes.
+            </p>
+          </div>
+          <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl">
+            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">Multi-source cross-validation</p>
+            <p class="text-xs text-slate-500 font-mono leading-relaxed">
+              Combine CAN logs with CSV sensor data and UART traces. Validate
+              cross-protocol behavioral rules in a single pass.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="py-10 px-6">
+      <div class="max-w-4xl mx-auto">
+        <a href="/pages/products.html"
+           class="flex items-center gap-2 text-xs font-mono text-slate-500 hover:text-blue-400 transition-colors">
+          <i data-lucide="arrow-left" class="w-3 h-3"></i>
+          Back to Products
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-slot"></div>
+
+  <script src="../../scripts/navigation.js"></script>
+  <script>VeriAI.initPage({ auth: true });</script>
+</body>
+</html>

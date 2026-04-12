@@ -177,14 +177,14 @@
 
     // Auto-redirect if already authenticated
     if (localStorage.getItem('auth') === 'ok') {
-      window.location.replace('main.html');
+      window.location.replace('pages/index.html');
     }
 
     function attempt() {
       const input = document.getElementById('pwd').value;
       if (btoa(input) === ENCODED) {
         localStorage.setItem('auth', 'ok');
-        window.location.replace('main.html');
+        window.location.replace('pages/index.html');
       } else {
         const err = document.getElementById('err');
         err.classList.add('visible');

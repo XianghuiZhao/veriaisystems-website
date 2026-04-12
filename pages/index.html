@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <script>(function(){if(localStorage.getItem('auth')!=='ok'){var d=location.pathname.split('/').filter(Boolean).length-1;location.replace('../'.repeat(d||1)+'index.html');}})()</script>
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.remove('dark');</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VeriAI Systems</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], mono: ['JetBrains Mono','monospace'] } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body class="bg-white dark:bg-[#0a0f1a] text-slate-900 dark:text-slate-200 min-h-screen transition-colors duration-200">
+
+  <div id="navbar-slot"></div>
+
+  <main>
+    <div id="hero-slot"></div>
+    <div id="overview-slot"></div>
+  </main>
+
+  <div id="footer-slot"></div>
+
+  <script src="../scripts/navigation.js"></script>
+  <script>
+    VeriAI.initPage({
+      auth: true,
+      sections: [
+        { slot: '#hero-slot',     src: 'sections/hero.html' },
+        { slot: '#overview-slot', src: 'sections/platform-overview.html' }
+      ]
+    });
+  </script>
+</body>
+</html>

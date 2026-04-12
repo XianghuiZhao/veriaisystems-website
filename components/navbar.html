@@ -1,0 +1,89 @@
+<nav class="fixed top-0 w-full z-50 border-b border-slate-200 dark:border-slate-800
+            bg-white/90 dark:bg-[#0a0f1a]/95 backdrop-blur-md transition-colors duration-200">
+  <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="/pages/index.html" class="flex items-center gap-2 shrink-0">
+      <div class="w-7 h-7 bg-blue-600 rounded flex items-center justify-center">
+        <i data-lucide="shield-check" class="text-white w-4 h-4"></i>
+      </div>
+      <span class="text-sm font-bold font-mono tracking-tight text-slate-900 dark:text-slate-100">
+        VeriAI <span class="text-blue-600 dark:text-blue-500">Systems</span>
+      </span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-7">
+      <a href="/pages/platform.html"
+         class="text-xs font-mono text-slate-500 hover:text-slate-900 dark:hover:text-slate-100
+                transition-colors tracking-wide"
+         data-i18n="nav-platform">Platform</a>
+      <a href="/pages/products.html"
+         class="text-xs font-mono text-slate-500 hover:text-slate-900 dark:hover:text-slate-100
+                transition-colors tracking-wide"
+         data-i18n="nav-products">Products</a>
+    </div>
+
+    <!-- Controls -->
+    <div class="flex items-center gap-2">
+      <!-- Language -->
+      <div class="hidden md:flex items-center gap-1.5 text-[11px] font-mono mr-2">
+        <button id="lang-en" onclick="setLang('en')"
+                class="text-slate-500 hover:text-blue-500 transition-colors px-1">EN</button>
+        <span class="text-slate-300 dark:text-slate-700">/</span>
+        <button id="lang-de" onclick="setLang('de')"
+                class="text-slate-500 hover:text-blue-500 transition-colors px-1">DE</button>
+        <span class="text-slate-300 dark:text-slate-700">/</span>
+        <button id="lang-zh" onclick="setLang('zh')"
+                class="text-slate-500 hover:text-blue-500 transition-colors px-1">中文</button>
+      </div>
+      <!-- Theme -->
+      <button onclick="toggleTheme()"
+              class="p-1.5 rounded text-slate-400 hover:text-slate-700 dark:hover:text-slate-300
+                     hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+        <i data-lucide="sun"  class="w-4 h-4 hidden dark:block"></i>
+        <i data-lucide="moon" class="w-4 h-4 block  dark:hidden"></i>
+      </button>
+      <!-- Lock / sign out -->
+      <button onclick="signOut()" title="Lock session"
+              class="p-1.5 rounded text-slate-400 hover:text-slate-700 dark:hover:text-slate-400
+                     hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+        <i data-lucide="lock" class="w-4 h-4"></i>
+      </button>
+      <!-- Mobile toggle -->
+      <button onclick="toggleMobileMenu()"
+              class="md:hidden p-1.5 rounded text-slate-500 hover:text-slate-900
+                     dark:hover:text-slate-200 transition-colors">
+        <i data-lucide="menu" id="menu-icon-open"  class="w-5 h-5"></i>
+        <i data-lucide="x"    id="menu-icon-close" class="w-5 h-5 hidden"></i>
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu"
+     class="fixed inset-0 z-40 bg-white dark:bg-[#0a0f1a]
+            translate-x-full transition-transform duration-300 md:hidden pt-20 px-6">
+  <div class="flex flex-col gap-6 text-sm font-mono">
+    <a href="/pages/platform.html" onclick="toggleMobileMenu()"
+       class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors py-1"
+       data-i18n="nav-platform">Platform</a>
+    <a href="/pages/products.html" onclick="toggleMobileMenu()"
+       class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors py-1"
+       data-i18n="nav-products">Products</a>
+
+    <div class="pt-6 border-t border-slate-200 dark:border-slate-800">
+      <p class="text-[10px] text-slate-400 uppercase tracking-widest mb-3" data-i18n="nav-language">Language</p>
+      <div class="flex gap-5">
+        <button onclick="setLang('en'); toggleMobileMenu()"
+                class="text-xs text-slate-500 hover:text-blue-500 transition-colors">EN</button>
+        <button onclick="setLang('de'); toggleMobileMenu()"
+                class="text-xs text-slate-500 hover:text-blue-500 transition-colors">DE</button>
+        <button onclick="setLang('zh'); toggleMobileMenu()"
+                class="text-xs text-slate-500 hover:text-blue-500 transition-colors">中文</button>
+      </div>
+    </div>
+  </div>
+</div>

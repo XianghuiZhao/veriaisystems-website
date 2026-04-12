@@ -1,109 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.remove('dark');</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy | VeriAI Systems</title>
-  <style>
-    body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.7; color: #222; }
-    h1 { font-size: 1.6rem; margin-bottom: 0.25em; }
-    h2 { font-size: 1.05rem; margin-top: 2em; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
-    p, li { font-size: 0.95rem; color: #333; }
-    ul { padding-left: 1.4em; }
-    a { color: #2563eb; }
-    footer { margin-top: 3em; font-size: 0.8rem; color: #888; border-top: 1px solid #eee; padding-top: 1em; }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], mono: ['JetBrains Mono','monospace'] } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="styles/main.css">
 </head>
-<body>
+<body class="bg-white dark:bg-[#0a0f1a] text-slate-900 dark:text-slate-200 min-h-screen transition-colors duration-200">
 
-<h1>Privacy Policy</h1>
-<p style="color: #666; font-size: 0.85rem;">Last updated: April 2026</p>
+  <div id="navbar-slot"></div>
 
-<p>
-  This privacy policy explains how VeriAI Systems handles data in connection with this website.
-  This site is a static product landing page. No user accounts, tracking tools, cookies, or analytics are used.
-</p>
+  <main>
+    <header class="pt-28 pb-12 px-6 border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-2xl mx-auto">
+        <p class="text-xs font-mono text-blue-500 uppercase tracking-[0.2em] mb-4">Legal</p>
+        <h1 class="text-3xl font-extrabold tracking-tight mb-2">Privacy Policy</h1>
+        <p class="text-xs font-mono text-slate-400 dark:text-slate-600">Last updated: April 2026</p>
+      </div>
+    </header>
 
-<h2>1. Data We Do Not Collect</h2>
-<p>
-  This website does not use cookies, analytics scripts, tracking pixels, or any third-party data collection tools.
-  No personal data is collected through forms, registration, or user interaction on this site.
-</p>
+    <section class="py-12 px-6">
+      <div class="max-w-2xl mx-auto space-y-10 text-sm leading-relaxed">
 
-<h2>2. Email Contact</h2>
-<p>
-  The only way to submit personal data voluntarily is by sending an email to one of the contact addresses listed on this site.
-  When you do so, your email address and the content of your message are processed solely to respond to your inquiry.
-  This data is not shared with third parties and is not used for marketing purposes.
-</p>
-<p>
-  Legal basis: Art. 6(1)(b) GDPR (processing necessary for handling a pre-contractual or contractual inquiry),
-  or Art. 6(1)(f) GDPR (legitimate interest in responding to direct technical inquiries).
-</p>
-<p>
-  Email correspondence is retained only as long as necessary to resolve the inquiry and is deleted thereafter.
-</p>
+        <p class="text-slate-600 dark:text-slate-400 font-mono">
+          This privacy policy explains how VeriAI Systems handles data in connection with this website.
+          This site is a static product landing page. No user accounts, tracking tools, cookies, or analytics are used.
+        </p>
 
-<h2>3. Server Log Data</h2>
-<p>
-  When you visit this website, the hosting provider may automatically record standard server log data, including:
-</p>
-<ul>
-  <li>IP address (typically anonymized or truncated by the provider)</li>
-  <li>Browser type and version</li>
-  <li>Operating system</li>
-  <li>Date and time of access</li>
-  <li>Requested URL and HTTP status code</li>
-</ul>
-<p>
-  This data is collected by the hosting infrastructure for technical operation and security purposes.
-  It is not linked to individual users and is not processed by VeriAI Systems for profiling or analysis.
-  Legal basis: Art. 6(1)(f) GDPR (legitimate interest in secure and stable website operation).
-</p>
+        <!-- Section 1 -->
+        <div>
+          <h2 class="text-xs font-mono text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-3">
+            1. Data We Do Not Collect
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 font-mono">
+            This website does not use cookies, analytics scripts, tracking pixels, or any third-party data
+            collection tools. No personal data is collected through forms, registration, or user interaction
+            on this site.
+          </p>
+        </div>
 
-<h2>4. Responsible Entity</h2>
-<p>
-  The entity responsible for this website under applicable data protection law:
-</p>
-<p>
-  Jinjin Zhang<br>
-  Germany<br>
-  E-Mail: <a href="mailto:info@veriai-systems.com">info@veriai-systems.com</a>
-</p>
+        <!-- Section 2 -->
+        <div>
+          <h2 class="text-xs font-mono text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-3">
+            2. Email Contact
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 font-mono mb-3">
+            The only way to submit personal data voluntarily is by sending an email to one of the contact
+            addresses listed on this site. When you do so, your email address and the content of your message
+            are processed solely to respond to your inquiry. This data is not shared with third parties and
+            is not used for marketing purposes.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 font-mono mb-3">
+            Legal basis: Art. 6(1)(b) GDPR (processing necessary for handling a pre-contractual or
+            contractual inquiry), or Art. 6(1)(f) GDPR (legitimate interest in responding to direct
+            technical inquiries).
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 font-mono">
+            Email correspondence is retained only as long as necessary to resolve the inquiry and is
+            deleted thereafter.
+          </p>
+        </div>
 
-<h2>5. Your Rights (GDPR)</h2>
-<p>
-  Under the General Data Protection Regulation (GDPR), you have the following rights regarding any personal data that may be held:
-</p>
-<ul>
-  <li>Right of access (Art. 15 GDPR)</li>
-  <li>Right to rectification (Art. 16 GDPR)</li>
-  <li>Right to erasure (Art. 17 GDPR)</li>
-  <li>Right to restriction of processing (Art. 18 GDPR)</li>
-  <li>Right to data portability (Art. 20 GDPR)</li>
-  <li>Right to object (Art. 21 GDPR)</li>
-</ul>
-<p>
-  To exercise any of these rights, contact us at <a href="mailto:info@veriai-systems.com">info@veriai-systems.com</a>.
-</p>
-<p>
-  You also have the right to lodge a complaint with a competent supervisory authority.
-  In Germany, the responsible authority depends on the federal state of the data controller.
-  The federal supervisory authority is the
-  <a href="https://www.bfdi.bund.de" target="_blank" rel="noopener">Bundesbeauftragter für den Datenschutz und die Informationsfreiheit (BfDI)</a>.
-</p>
+        <!-- Section 3 -->
+        <div>
+          <h2 class="text-xs font-mono text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-3">
+            3. Server Log Data
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 font-mono mb-3">
+            When you visit this website, the hosting provider may automatically record standard server
+            log data, including:
+          </p>
+          <ul class="space-y-1.5 pl-4 font-mono text-slate-600 dark:text-slate-400">
+            <li class="flex gap-2">
+              <span class="text-slate-300 dark:text-slate-700 shrink-0">—</span>
+              IP address (typically anonymized or truncated by the provider)
+            </li>
+            <li class="flex gap-2">
+              <span class="text-slate-300 dark:text-slate-700 shrink-0">—</span>
+              Browser type and version
+            </li>
+            <li class="flex gap-2">
+              <span class="text-slate-300 dark:text-slate-700 shrink-0">—</span>
+              Operating system
+            </li>
+            <li class="flex gap-2">
+              <span class="text-slate-300 dark:text-slate-700 shrink-0">—</span>
+              Date and time of access
+            </li>
+            <li class="flex gap-2">
+              <span class="text-slate-300 dark:text-slate-700 shrink-0">—</span>
+              Requested URL and HTTP status code
+            </li>
+          </ul>
+          <p class="text-slate-600 dark:text-slate-400 font-mono mt-3">
+            This data is collected by the hosting infrastructure for technical operation and security
+            purposes. It is not linked to individual users and is not processed by VeriAI Systems for
+            profiling or analysis. Legal basis: Art. 6(1)(f) GDPR (legitimate interest in secure and
+            stable website operation).
+          </p>
+        </div>
 
-<h2>6. Changes to This Policy</h2>
-<p>
-  This policy may be updated if the technical setup of this website changes materially.
-  The date at the top of this page reflects the most recent revision.
-</p>
+        <!-- Section 4 -->
+        <div>
+          <h2 class="text-xs font-mono text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-3">
+            4. Responsible Entity
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 font-mono mb-3">
+            The entity responsible for this website under applicable data protection law:
+          </p>
+          <p class="text-slate-700 dark:text-slate-300 font-mono">
+            Jinjin Zhang<br>
+            Germany<br>
+            E-Mail:
+            <a href="mailto:info@veriai-systems.com"
+               class="text-blue-500 hover:text-blue-400 transition-colors">
+              info@veriai-systems.com
+            </a>
+          </p>
+        </div>
 
-<footer>
-  &copy; 2026 VeriAI Systems &mdash;
-  <a href="/">Home</a> &mdash;
-  <a href="/impressum.html">Impressum</a>
-</footer>
+        <!-- Section 5 -->
+        <div>
+          <h2 class="text-xs font-mono text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-3">
+            5. Your Rights (GDPR)
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 font-mono mb-3">
+            Under the General Data Protection Regulation (GDPR), you have the following rights regarding
+            any personal data that may be held:
+          </p>
+          <ul class="space-y-1.5 pl-4 font-mono text-slate-600 dark:text-slate-400">
+            <li class="flex gap-2"><span class="text-slate-300 dark:text-slate-700 shrink-0">—</span>Right of access (Art. 15 GDPR)</li>
+            <li class="flex gap-2"><span class="text-slate-300 dark:text-slate-700 shrink-0">—</span>Right to rectification (Art. 16 GDPR)</li>
+            <li class="flex gap-2"><span class="text-slate-300 dark:text-slate-700 shrink-0">—</span>Right to erasure (Art. 17 GDPR)</li>
+            <li class="flex gap-2"><span class="text-slate-300 dark:text-slate-700 shrink-0">—</span>Right to restriction of processing (Art. 18 GDPR)</li>
+            <li class="flex gap-2"><span class="text-slate-300 dark:text-slate-700 shrink-0">—</span>Right to data portability (Art. 20 GDPR)</li>
+            <li class="flex gap-2"><span class="text-slate-300 dark:text-slate-700 shrink-0">—</span>Right to object (Art. 21 GDPR)</li>
+          </ul>
+          <p class="text-slate-600 dark:text-slate-400 font-mono mt-3">
+            To exercise any of these rights, contact us at
+            <a href="mailto:info@veriai-systems.com"
+               class="text-blue-500 hover:text-blue-400 transition-colors">
+              info@veriai-systems.com
+            </a>.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 font-mono mt-3">
+            You also have the right to lodge a complaint with a competent supervisory authority.
+            In Germany, the federal supervisory authority is the
+            <a href="https://www.bfdi.bund.de" target="_blank" rel="noopener"
+               class="text-blue-500 hover:text-blue-400 transition-colors">
+              Bundesbeauftragter für den Datenschutz und die Informationsfreiheit (BfDI)
+            </a>.
+          </p>
+        </div>
 
+        <!-- Section 6 -->
+        <div>
+          <h2 class="text-xs font-mono text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-3">
+            6. Changes to This Policy
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 font-mono">
+            This policy may be updated if the technical setup of this website changes materially.
+            The date at the top of this page reflects the most recent revision.
+          </p>
+        </div>
+
+        <!-- Back -->
+        <div class="pt-4 border-t border-slate-200 dark:border-slate-800">
+          <a href="/pages/index.html"
+             class="flex items-center gap-2 text-xs font-mono text-slate-500 hover:text-blue-500 transition-colors">
+            <i data-lucide="arrow-left" class="w-3 h-3"></i>
+            Back to Home
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-slot"></div>
+
+  <script src="scripts/navigation.js"></script>
+  <script>VeriAI.initPage({ auth: false });</script>
 </body>
 </html>

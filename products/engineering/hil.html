@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <script>(function(){if(localStorage.getItem('auth')!=='ok'){var d=location.pathname.split('/').filter(Boolean).length-1;location.replace('../'.repeat(d||1)+'index.html');}})()</script>
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.remove('dark');</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HIL Testing | VeriAI Systems</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], mono: ['JetBrains Mono','monospace'] } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body class="bg-white dark:bg-[#0a0f1a] text-slate-900 dark:text-slate-200 min-h-screen transition-colors duration-200">
+
+  <div id="navbar-slot"></div>
+
+  <main>
+    <header class="pt-28 pb-16 px-6 border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-[10px] font-mono text-blue-400 uppercase tracking-widest
+                       px-2.5 py-1 border border-blue-500/30 rounded">
+            Engineering Validation
+          </span>
+        </div>
+        <div class="flex items-start gap-5 mb-6">
+          <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center
+                      text-blue-500 shrink-0 mt-1">
+            <i data-lucide="cpu" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 mb-3">
+              HIL Testing
+            </h1>
+            <p class="text-sm text-slate-500 font-mono max-w-2xl leading-relaxed">
+              Hardware-in-the-loop closed-loop ECU testing with deterministic DSL rule evaluation.
+              Real hardware, real signals, deterministic verdicts.
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-3 flex-wrap">
+          <span class="text-[10px] font-mono text-slate-500 dark:text-slate-600 uppercase tracking-widest px-2 py-1 border border-slate-200 dark:border-slate-800 rounded">HIL</span>
+          <span class="text-[10px] font-mono text-slate-500 dark:text-slate-600 uppercase tracking-widest px-2 py-1 border border-slate-200 dark:border-slate-800 rounded">ECU</span>
+          <span class="text-[10px] font-mono text-slate-500 dark:text-slate-600 uppercase tracking-widest px-2 py-1 border border-slate-200 dark:border-slate-800 rounded">Hardware</span>
+          <span class="text-[10px] font-mono text-slate-500 dark:text-slate-600 uppercase tracking-widest px-2 py-1 border border-slate-200 dark:border-slate-800 rounded">Closed-loop</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="py-16 px-6 border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-xs font-mono text-blue-500 uppercase tracking-[0.2em] mb-4">Overview</p>
+        <h2 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 mb-8">
+          Deterministic validation on physical ECU signal output.
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl">
+            <p class="text-[10px] font-mono text-slate-500 dark:text-slate-600 uppercase tracking-widest mb-3">Input</p>
+            <p class="text-sm font-mono text-slate-700 dark:text-slate-300 font-bold mb-2">Physical Signals</p>
+            <p class="text-xs text-slate-500 font-mono leading-relaxed">
+              CAN bus from real ECU hardware<br>
+              UART from embedded targets<br>
+              Analog sensor interfaces
+            </p>
+          </div>
+          <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl">
+            <p class="text-[10px] font-mono text-slate-500 dark:text-slate-600 uppercase tracking-widest mb-3">Processing</p>
+            <p class="text-sm font-mono text-slate-700 dark:text-slate-300 font-bold mb-2">DSL Rule Engine</p>
+            <p class="text-xs text-slate-500 font-mono leading-relaxed">
+              Real-time deterministic evaluation<br>
+              Same rules as SIL validation<br>
+              Closed-loop signal assertion
+            </p>
+          </div>
+          <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl">
+            <p class="text-[10px] font-mono text-slate-500 dark:text-slate-600 uppercase tracking-widest mb-3">Output</p>
+            <p class="text-sm font-mono text-slate-700 dark:text-slate-300 font-bold mb-2">Structured Verdicts</p>
+            <p class="text-xs text-slate-500 font-mono leading-relaxed">
+              PASS / FAIL / UNKNOWN / FLAKY<br>
+              Failure_type: system / data<br>
+              Signal trace at failure point
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 px-6 border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-xs font-mono text-blue-500 uppercase tracking-[0.2em] mb-4">Capabilities</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="flex gap-4">
+            <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></div>
+            <div>
+              <p class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">Hardware signal ingestion</p>
+              <p class="text-xs text-slate-500 font-mono leading-relaxed">
+                Direct connection to CAN bus, UART, and analog interfaces.
+                Physical signal values decoded and evaluated in real time.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></div>
+            <div>
+              <p class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">SIL-to-HIL rule continuity</p>
+              <p class="text-xs text-slate-500 font-mono leading-relaxed">
+                DSL rules from simulation are directly applied to hardware.
+                Behavioral divergence between SIL and HIL is immediately visible.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></div>
+            <div>
+              <p class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">Failure type classification</p>
+              <p class="text-xs text-slate-500 font-mono leading-relaxed">
+                FAIL verdicts classified as system failure or data-quality issue.
+                Eliminates false failures from signal noise or transmission errors.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></div>
+            <div>
+              <p class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">No environment intrusion</p>
+              <p class="text-xs text-slate-500 font-mono leading-relaxed">
+                VeriAI observes signals only. It does not control or interact with the
+                ECU or test bench hardware.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 px-6 border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-xs font-mono text-blue-500 uppercase tracking-[0.2em] mb-4">Use Cases</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl">
+            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">ECU validation bench</p>
+            <p class="text-xs text-slate-500 font-mono leading-relaxed">
+              Validate production ECU behavior on a HIL bench against
+              requirement-derived DSL rules. Deterministic verdict per test run.
+            </p>
+          </div>
+          <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl">
+            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">ADAS closed-loop testing</p>
+            <p class="text-xs text-slate-500 font-mono leading-relaxed">
+              Validate ADAS ECU response to simulated environment stimuli.
+              Timing and state assertions evaluated against physical outputs.
+            </p>
+          </div>
+          <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl">
+            <p class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">Regression on hardware</p>
+            <p class="text-xs text-slate-500 font-mono leading-relaxed">
+              Re-run the same DSL rule set against new ECU firmware builds.
+              Identical verdicts confirm behavioral equivalence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="py-10 px-6">
+      <div class="max-w-4xl mx-auto">
+        <a href="/pages/products.html"
+           class="flex items-center gap-2 text-xs font-mono text-slate-500 hover:text-blue-400 transition-colors">
+          <i data-lucide="arrow-left" class="w-3 h-3"></i>
+          Back to Products
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-slot"></div>
+
+  <script src="../../scripts/navigation.js"></script>
+  <script>VeriAI.initPage({ auth: true });</script>
+</body>
+</html>
