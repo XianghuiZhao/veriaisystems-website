@@ -104,6 +104,16 @@
       <a href="#paradigm" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-paradigm">Paradigm</a>
       <a href="#demo" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-demo">Execution</a>
       <a href="#scenarios" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-scenarios">Scenarios</a>
+      
+      <!-- 移动端语言切换 -->
+      <div class="pt-8 border-t border-slate-200 dark:border-slate-800">
+        <p class="text-[10px] text-slate-400 dark:text-slate-600 font-mono uppercase tracking-widest mb-4">Select Language / 选择语言</p>
+        <div class="flex space-x-6">
+          <button onclick="setLang('en'); toggleMobileMenu()" id="lang-en-mob" class="text-sm font-mono text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors">EN</button>
+          <button onclick="setLang('de'); toggleMobileMenu()" id="lang-de-mob" class="text-sm font-mono text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors">DE</button>
+          <button onclick="setLang('zh'); toggleMobileMenu()" id="lang-zh-mob" class="text-sm font-mono text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors">中文</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -520,6 +530,21 @@
           el.innerText = translations[lang][key];
         }
       });
+      
+      // 更新所有语言按钮的状态 (桌面 + 移动)
+      ['en', 'de', 'zh'].forEach(l => {
+        const desktopBtn = document.getElementById(`lang-${l}`);
+        const mobileBtn = document.getElementById(`lang-${l}-mob`);
+        
+        if (l === lang) {
+          if (desktopBtn) desktopBtn.classList.add('text-blue-500');
+          if (mobileBtn) mobileBtn.classList.add('text-blue-500');
+        } else {
+          if (desktopBtn) desktopBtn.classList.remove('text-blue-500');
+          if (mobileBtn) mobileBtn.classList.remove('text-blue-500');
+        }
+      });
+
       document.documentElement.lang = lang;
     }
 
