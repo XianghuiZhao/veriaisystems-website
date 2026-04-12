@@ -8,16 +8,50 @@
   'use strict';
 
   // ── PATH RESOLUTION ───────────────────────────────────────────────────────────
-  // Calculates root-relative path prefix based on current page depth.
-  // /pages/index.html       → depth 1 → ../
-  // /products/eng/x.html   → depth 2 → ../../
+  // Derives the root-relative path prefix from the <script src> attribute of
+  // this very file. This is the only reliable approach that works on both a
+  // local dev server (site at /) AND GitHub Pages project repos
+  // (site at /repo-name/) where pathname-based depth counting is off by one.
+  //
+  // Example src values and resulting ROOT:
+  //   scripts/navigation.js        (root level)   → './'
+  //   ../scripts/navigation.js     (pages/)        → '../'
+  //   ../../scripts/navigation.js  (products/eng/) → '../../'
   function getRoot() {
-    var parts = window.location.pathname.replace(/\\/g, '/').split('/').filter(Boolean);
-    var depth = parts.length - 1; // minus the filename itself
+    var scripts = document.getElementsByTagName('script');
+    for (var i = 0; i < scripts.length; i++) {
+      var src = scripts[i].getAttribute('src') || '';
+      var match = src.match(/^(.*?)scripts\/navigation\.js$/);
+      if (match) {
+        return match[1] || './';
+      }
+    }
+    // Fallback: depth from pathname (works for local dev, not GH Pages project pages)
+    var parts = window.location.pathname.split('/').filter(Boolean);
+    var depth = parts.length - 1;
     return depth > 0 ? '../'.repeat(depth) : './';
   }
 
   var ROOT = getRoot();
+
+  // ── PATH REWRITER ─────────────────────────────────────────────────────────────
+  // Rewrites absolute paths (href="/...", src="/...") inside a container element
+  // to be root-relative using ROOT. This makes all links work on GitHub Pages
+  // project repos (e.g. username.github.io/repo-name/) as well as at root.
+  function rewritePaths(container) {
+    var root = ROOT;
+    var els = container.querySelectorAll('[href],[src],[action]');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      ['href', 'src', 'action'].forEach(function (attr) {
+        var val = el.getAttribute(attr);
+        // Only rewrite site-internal absolute paths: /foo (not //foo or http://)
+        if (val && val.charAt(0) === '/' && val.charAt(1) !== '/') {
+          el.setAttribute(attr, root + val.slice(1));
+        }
+      });
+    }
+  }
 
   // ── COMPONENT / SECTION LOADER ────────────────────────────────────────────────
   function loadHTML(selector, url) {
@@ -30,6 +64,7 @@
       })
       .then(function (html) {
         el.innerHTML = html;
+        rewritePaths(el);
       })
       .catch(function (e) {
         console.warn('[VeriAI] Failed to load:', url, e.message);
@@ -554,6 +589,8 @@
     }
 
     return Promise.all(tasks).then(function () {
+      // Rewrite any remaining absolute paths in the page's own static content
+      rewritePaths(document.body);
       var lang = localStorage.getItem('lang') || 'en';
       applyTranslations(lang);
       if (window.lucide) lucide.createIcons();
