@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VeriAI Systems | 工程验证平台</title>
+  <title>VeriAI Systems | Executable Validation for Complex Systems</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,6 +54,9 @@
     @keyframes blink {
       50% { opacity: 0; }
     }
+    .dsl-core-circle {
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+    }
   </style>
 </head>
 <body class="grid-bg min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
@@ -68,20 +71,18 @@
       </div>
       
       <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
-        <a href="#platform" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 transition-colors" data-i18n="nav-platform">Platform</a>
-        <a href="#demo" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 transition-colors" data-i18n="nav-demo">Demo</a>
-        <a href="#use-cases" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 transition-colors" data-i18n="nav-use-cases">Use Cases</a>
-        <a href="#contact" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 transition-colors" data-i18n="nav-contact">Contact</a>
+        <a href="#philosophy" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 transition-colors" data-i18n="nav-philosophy">Philosophy</a>
+        <a href="#paradigm" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 transition-colors" data-i18n="nav-paradigm">Paradigm</a>
+        <a href="#demo" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 transition-colors" data-i18n="nav-demo">Execution</a>
+        <a href="#scenarios" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 transition-colors" data-i18n="nav-scenarios">Scenarios</a>
       </div>
 
       <div class="flex items-center space-x-6">
-        <!-- 主题切换按钮 -->
         <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 transition-colors">
           <i data-lucide="sun" id="theme-icon-sun" class="w-4 h-4 hidden dark:block"></i>
           <i data-lucide="moon" id="theme-icon-moon" class="w-4 h-4 block dark:hidden"></i>
         </button>
 
-        <!-- 汉堡菜单按钮 (仅移动端可见) -->
         <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
           <i data-lucide="menu" id="menu-icon-open" class="w-5 h-5"></i>
           <i data-lucide="x" id="menu-icon-close" class="w-5 h-5 hidden"></i>
@@ -96,209 +97,225 @@
     </div>
   </nav>
 
-  <!-- 移动端菜单叠加层 -->
+  <!-- 移动端菜单 -->
   <div id="mobile-menu" class="fixed inset-0 z-40 bg-white dark:bg-slate-950 transform translate-x-full transition-transform duration-300 md:hidden pt-24 px-6">
     <div class="flex flex-col space-y-6 text-lg font-medium">
-      <a href="#platform" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-platform">Platform</a>
-      <a href="#demo" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-demo">Demo</a>
-      <a href="#use-cases" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-use-cases">Use Cases</a>
-      <a href="#contact" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-contact">Contact</a>
-      
-      <div class="pt-8 border-t border-slate-200 dark:border-slate-800">
-        <p class="text-[10px] text-slate-400 dark:text-slate-600 font-mono uppercase tracking-widest mb-4">Language / 语言</p>
-        <div class="flex space-x-6">
-          <button onclick="setLang('en'); toggleMobileMenu()" class="text-sm font-mono text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors">EN</button>
-          <button onclick="setLang('de'); toggleMobileMenu()" class="text-sm font-mono text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors">DE</button>
-          <button onclick="setLang('zh'); toggleMobileMenu()" class="text-sm font-mono text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors">中文</button>
-        </div>
-      </div>
+      <a href="#philosophy" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-philosophy">Philosophy</a>
+      <a href="#paradigm" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-paradigm">Paradigm</a>
+      <a href="#demo" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-demo">Execution</a>
+      <a href="#scenarios" onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors" data-i18n="nav-scenarios">Scenarios</a>
     </div>
   </div>
 
-  <!-- 英雄部分 (Hero Section) -->
+  <!-- Hero Section -->
   <header class="pt-32 pb-20 px-6">
     <div class="max-w-7xl mx-auto flex flex-col items-center text-center">
       <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-mono mb-6">
         <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-        <span data-i18n="hero-tag">V2.4 ENGINE ACTIVE</span>
+        <span data-i18n="hero-tag">DETERMINISTIC VALIDATION ACTIVE</span>
       </div>
       <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 max-w-4xl text-slate-900 dark:text-white" data-i18n="hero-title">
-        Rule-Driven Validation for System Engineering
+        Executable Validation for Complex Systems
       </h1>
-      <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mb-10" data-i18n="hero-subtitle">
-        Transforming requirements into executable validation rules. A dedicated tool for signal-based testing and complex hardware validation.
+      <p class="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mb-12 leading-relaxed" data-i18n="hero-subtitle">
+        Bridging the gap between high-level requirements and verified system behavior. A deterministic engine for the next generation of engineering paradigms.
       </p>
-      
-      <!-- 系统架构图示 -->
-      <div class="w-full max-w-5xl bg-white dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-800 p-6 glow-blue relative overflow-hidden group">
-        <div class="flex items-center space-x-2 mb-6 border-b border-slate-200 dark:border-slate-800 pb-3">
-          <div class="flex space-x-1.5">
-            <div class="w-2.5 h-2.5 rounded-full bg-slate-200 dark:bg-slate-700"></div>
-            <div class="w-2.5 h-2.5 rounded-full bg-slate-200 dark:bg-slate-700"></div>
-            <div class="w-2.5 h-2.5 rounded-full bg-slate-200 dark:bg-slate-700"></div>
-          </div>
-          <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 uppercase tracking-widest">System Architecture Pipeline</span>
+
+      <!-- Practical Bridge: Used For -->
+      <div class="flex flex-wrap justify-center gap-4 md:gap-8 mb-16 text-xs md:text-sm font-mono text-slate-500">
+        <div class="flex items-center space-x-2">
+          <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500"></i>
+          <span data-i18n="hero-use-1">Safety-critical automotive behavior</span>
         </div>
+        <div class="flex items-center space-x-2">
+          <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500"></i>
+          <span data-i18n="hero-use-2">Embedded controllers with real signals</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500"></i>
+          <span data-i18n="hero-use-3">Cross-system interactions</span>
+        </div>
+      </div>
+      
+      <!-- 核心架构：DSL 驱动 -->
+      <div class="w-full max-w-5xl bg-white dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 glow-blue relative overflow-hidden group">
+        <div class="absolute top-0 right-0 p-4 font-mono text-[10px] text-slate-400 opacity-30">PARADIGM: REQUIREMENT-CENTRIC</div>
         
-        <div class="grid grid-cols-1 md:grid-cols-7 gap-2 items-center py-4">
-          <div class="col-span-1 p-4 border border-slate-200 dark:border-slate-800 rounded bg-slate-50 dark:bg-slate-950 flex flex-col items-center">
-            <i data-lucide="file-text" class="text-blue-600 dark:text-blue-500 mb-2 w-5 h-5"></i>
-            <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase" data-i18n="diag-req">Requirements</span>
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8 py-8 relative">
+          <!-- DSL: The Interface -->
+          <div class="w-full md:w-1/3 flex flex-col items-center text-center p-6 border border-blue-500/30 bg-blue-500/5 rounded-xl ring-1 ring-blue-500/20 relative z-10">
+            <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4 shadow-lg shadow-blue-500/20">
+              <i data-lucide="terminal" class="text-white w-6 h-6"></i>
+            </div>
+            <h3 class="text-sm font-bold mb-2 uppercase tracking-widest text-blue-600 dark:text-blue-400" data-i18n="diag-dsl-title">DSL: The Interface</h3>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-mono" data-i18n="diag-dsl-desc">The central abstraction layer where requirements become executable logic.</p>
           </div>
-          <div class="flex justify-center"><i data-lucide="arrow-right" class="text-slate-300 dark:text-slate-700 w-4 h-4"></i></div>
-          <div class="col-span-1 p-4 border border-blue-500/30 rounded bg-slate-50 dark:bg-slate-950 flex flex-col items-center ring-1 ring-blue-500/20">
-            <i data-lucide="code-2" class="text-blue-600 dark:text-blue-400 mb-2 w-5 h-5"></i>
-            <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase" data-i18n="diag-dsl">Rule DSL</span>
+
+          <!-- Connector -->
+          <div class="hidden md:flex items-center text-slate-300 dark:text-slate-700">
+            <i data-lucide="chevron-right" class="w-8 h-8"></i>
           </div>
-          <div class="flex justify-center"><i data-lucide="arrow-right" class="text-slate-300 dark:text-slate-700 w-4 h-4"></i></div>
-          <div class="col-span-1 p-4 border border-slate-200 dark:border-slate-800 rounded bg-slate-50 dark:bg-slate-950 flex flex-col items-center">
-            <i data-lucide="cpu" class="text-blue-600 dark:text-blue-500 mb-2 w-5 h-5"></i>
-            <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase" data-i18n="diag-engine">Engine</span>
+
+          <!-- Execution Engine -->
+          <div class="w-full md:w-1/3 flex flex-col items-center text-center p-6 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 rounded-xl relative z-10">
+            <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center mb-4">
+              <i data-lucide="cpu" class="text-blue-500 w-6 h-6"></i>
+            </div>
+            <h3 class="text-sm font-bold mb-2 uppercase tracking-widest text-slate-700 dark:text-slate-300" data-i18n="diag-engine-title">Validation Engine</h3>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-mono" data-i18n="diag-engine-desc">High-performance evaluation core transforming rules into deterministic outcomes.</p>
           </div>
-          <div class="flex justify-center"><i data-lucide="arrow-right" class="text-slate-300 dark:text-slate-700 w-4 h-4"></i></div>
-          <div class="col-span-1 p-4 border border-slate-200 dark:border-slate-800 rounded bg-slate-50 dark:bg-slate-950 flex flex-col items-center">
-            <i data-lucide="check-square" class="text-blue-600 dark:text-blue-500 mb-2 w-5 h-5"></i>
-            <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase" data-i18n="diag-report">Validation</span>
+
+          <!-- Connector -->
+          <div class="hidden md:flex items-center text-slate-300 dark:text-slate-700">
+            <i data-lucide="chevron-right" class="w-8 h-8"></i>
+          </div>
+
+          <!-- Physical World -->
+          <div class="w-full md:w-1/3 flex flex-col items-center text-center p-6 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 rounded-xl relative z-10">
+            <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center mb-4">
+              <i data-lucide="activity" class="text-blue-500 w-6 h-6"></i>
+            </div>
+            <h3 class="text-sm font-bold mb-2 uppercase tracking-widest text-slate-700 dark:text-slate-300" data-i18n="diag-signals-title">Signal Domain</h3>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-mono" data-i18n="diag-signals-desc">Direct validation of complex multi-signal behaviors in real-world environments.</p>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- 平台模块 (Platform Section) -->
-  <section id="platform" class="py-24 px-6 border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/20">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
-        <div class="lg:col-span-1">
-          <h2 class="text-3xl font-bold mb-6 tracking-tight text-slate-900 dark:text-white" data-i18n="plat-title">Built for Engineering Precision</h2>
-          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8" data-i18n="plat-subtitle">
-            Our platform bridges the gap between high-level requirements and low-level signal validation, providing a deterministic environment for system testing.
+  <!-- Philosophy Section -->
+  <section id="philosophy" class="py-24 px-6 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/20">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-sm font-mono text-blue-500 uppercase tracking-[0.3em] mb-8" data-i18n="phil-tag">Engineering Philosophy</h2>
+      <p class="text-3xl md:text-4xl font-bold mb-8 leading-tight tracking-tight text-slate-900 dark:text-white" data-i18n="phil-title">
+        Modern systems are defined by behavior, not code.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left mt-16">
+        <div class="space-y-4">
+          <h3 class="text-lg font-bold text-slate-400 uppercase tracking-widest text-[12px]" data-i18n="phil-left-tag">Traditional Testing</h3>
+          <p class="text-slate-600 dark:text-slate-500 text-sm leading-relaxed" data-i18n="phil-left-desc">
+            Validates specific implementations and unit-level functions. Often disconnected from high-level system requirements, leading to coverage gaps in complex interactions.
           </p>
-          <ul class="space-y-4 text-sm font-mono text-slate-500">
-            <li class="flex items-center space-x-3">
-              <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-              <span data-i18n="plat-feature-1">Real-time Deterministic Execution</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-              <span data-i18n="plat-feature-2">Multi-protocol Support (CAN/LIN/ETH)</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-              <span data-i18n="plat-feature-3">Temporal Logic Evaluation</span>
-            </li>
-          </ul>
         </div>
-        
-        <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="p-8 border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900/40 hover:bg-slate-50 dark:hover:bg-slate-900/60 transition-colors shadow-sm dark:shadow-none">
-            <i data-lucide="terminal" class="text-blue-600 dark:text-blue-500 mb-6 w-6 h-6"></i>
-            <h3 class="text-lg font-bold mb-3 text-slate-900 dark:text-white" data-i18n="mod-dsl-title">Domain-Specific Language</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="mod-dsl-desc">A powerful DSL designed specifically for expressing validation rules without the overhead of general-purpose programming.</p>
-          </div>
-          <div class="p-8 border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900/40 hover:bg-slate-50 dark:hover:bg-slate-900/60 transition-colors shadow-sm dark:shadow-none">
-            <i data-lucide="zap" class="text-blue-600 dark:text-blue-500 mb-6 w-6 h-6"></i>
-            <h3 class="text-lg font-bold mb-3 text-slate-900 dark:text-white" data-i18n="mod-engine-title">Evaluation Engine</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="mod-engine-desc">High-throughput engine capable of processing thousands of signals per second with microsecond precision.</p>
-          </div>
-          <div class="p-8 border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900/40 hover:bg-slate-50 dark:hover:bg-slate-900/60 transition-colors shadow-sm dark:shadow-none">
-            <i data-lucide="activity" class="text-blue-600 dark:text-blue-500 mb-6 w-6 h-6"></i>
-            <h3 class="text-lg font-bold mb-3 text-slate-900 dark:text-white" data-i18n="mod-signals-title">Signal Analytics</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="mod-signals-desc">Built-in tools for signal correlation, frequency analysis, and automated anomaly detection across time series.</p>
-          </div>
-          <div class="p-8 border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900/40 hover:bg-slate-50 dark:hover:bg-slate-900/60 transition-colors shadow-sm dark:shadow-none">
-            <i data-lucide="box" class="text-blue-600 dark:text-blue-500 mb-6 w-6 h-6"></i>
-            <h3 class="text-lg font-bold mb-3 text-slate-900 dark:text-white" data-i18n="mod-integ-title">Integration Stack</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="mod-integ-desc">Ready-to-use drivers for industrial hardware and seamless integration with CI/CD engineering pipelines.</p>
-          </div>
+        <div class="space-y-4">
+          <h3 class="text-lg font-bold text-blue-500 uppercase tracking-widest text-[12px]" data-i18n="phil-right-tag">VeriAI Paradigm</h3>
+          <p class="text-slate-800 dark:text-slate-300 text-sm leading-relaxed font-medium" data-i18n="phil-right-desc">
+            Validates system-level behavior defined directly by requirements. We provide the deterministic engine that ensures the "physical world" behaves exactly as specified in the "rule world."
+          </p>
+          <p class="text-[11px] font-mono text-slate-500 dark:text-slate-600 mt-4 border-l-2 border-blue-500/30 pl-4" data-i18n="phil-boundary">
+            System Boundary: The system observes and validates signals, but does not control or intrude upon the environment itself.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 演示部分 (Demo Section) -->
-  <section id="demo" class="py-24 px-6 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/20">
+  <!-- Paradigm Section -->
+  <section id="paradigm" class="py-24 px-6 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold mb-4 tracking-tight" data-i18n="paradigm-title">The Validation Paradigm</h2>
+        <p class="text-slate-500 dark:text-slate-400 max-w-2xl" data-i18n="paradigm-subtitle">A integrated environment for translating requirements into verifiable system truth.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="p-8 border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-slate-900/40 hover:border-blue-500/50 transition-all group">
+          <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center mb-6 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+            <i data-lucide="terminal"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-3" data-i18n="mod-dsl-title">DSL: The Unified Interface</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="mod-dsl-desc">Expressing complex system logic as verifiable rules. Our DSL is the bridge between human requirement and machine verification.</p>
+        </div>
+        <div class="p-8 border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-slate-900/40 hover:border-blue-500/50 transition-all group">
+          <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center mb-6 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+            <i data-lucide="zap"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-3" data-i18n="mod-engine-title">Deterministic Engine</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="mod-engine-desc">Eliminating uncertainty. Our evaluation engine ensures that every requirement is validated against real-time signals with microsecond precision.</p>
+        </div>
+        <div class="p-8 border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-slate-900/40 hover:border-blue-500/50 transition-all group">
+          <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center mb-6 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+            <i data-lucide="layers"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-3" data-i18n="mod-integ-title">Requirement Provenance</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="mod-integ-desc">Direct traceability from signal-level validation back to high-level requirements. Every pass/fail has a behavioral root cause.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section id="demo" class="py-24 px-6 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/20">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
         <div>
-          <h2 class="text-3xl font-bold mb-4 tracking-tight text-slate-900 dark:text-white" data-i18n="demo-title">Validation Demo</h2>
-          <p class="text-slate-600 dark:text-slate-400 max-w-xl" data-i18n="demo-subtitle">See how rules translate to real-time signal validation outcomes.</p>
+          <h2 class="text-3xl font-bold mb-4 tracking-tight" data-i18n="demo-title">Executable Requirement Demo</h2>
+          <p class="text-slate-500 dark:text-slate-400 max-w-xl" data-i18n="demo-subtitle">Observe how a high-level safety requirement is validated against real-time cross-signal behavior.</p>
         </div>
-        <div class="flex space-x-4">
-           <button onclick="runDemo()" id="run-btn" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded font-medium transition-all flex items-center space-x-2 text-sm shadow-lg shadow-blue-500/20">
-             <i data-lucide="play" class="w-4 h-4 fill-current"></i>
-             <span data-i18n="demo-run">Execute Rule</span>
-           </button>
-        </div>
+        <button onclick="runDemo()" id="run-btn" class="px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded font-bold transition-all flex items-center space-x-3 text-sm shadow-xl shadow-blue-500/20">
+          <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+          <span data-i18n="demo-run">Verify Behavior</span>
+        </button>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Rule Editor -->
-        <div class="lg:col-span-5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-xl dark:shadow-2xl">
+        <!-- DSL Editor -->
+        <div class="lg:col-span-5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-2xl">
           <div class="px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-              <i data-lucide="file-code" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
-              <span class="text-xs font-mono text-slate-500 dark:text-slate-400">safety_validation.vsl</span>
-            </div>
-            <span class="text-[10px] font-mono text-slate-400 dark:text-slate-600 uppercase">VeriAI DSL v1.2</span>
+            <span class="text-[10px] font-mono text-blue-600 dark:text-blue-400 uppercase tracking-widest font-bold">Requirement_Input</span>
+            <span class="text-[10px] font-mono text-slate-400">VeriAI_DSL v2.4</span>
           </div>
-          <div class="p-6 font-mono text-sm leading-relaxed overflow-x-auto text-slate-700 dark:text-slate-300">
-            <div class="flex"><span class="text-slate-400 dark:text-slate-700 w-6 shrink-0">1</span> <span class="text-purple-600 dark:text-purple-400">RULE</span> <span class="text-blue-600 dark:text-blue-300">"Emergency_Braking_Check"</span></div>
-            <div class="flex"><span class="text-slate-400 dark:text-slate-700 w-6 shrink-0">2</span> <span class="text-purple-600 dark:text-purple-400">IF</span> vehicle_speed > 30.0</div>
-            <div class="flex"><span class="text-slate-400 dark:text-slate-700 w-6 shrink-0">3</span> <span class="text-purple-600 dark:text-purple-400">AND</span> collision_alert == <span class="text-red-500 dark:text-red-400">TRUE</span></div>
-            <div class="flex"><span class="text-slate-400 dark:text-slate-700 w-6 shrink-0">4</span> <span class="text-purple-600 dark:text-purple-400">THEN</span></div>
-            <div class="flex"><span class="text-slate-400 dark:text-slate-700 w-6 shrink-0">5</span> &nbsp;&nbsp;<span class="text-yellow-600 dark:text-yellow-400">ASSERT</span> brake_pressure > 80.0</div>
-            <div class="flex"><span class="text-slate-400 dark:text-slate-700 w-6 shrink-0">6</span> &nbsp;&nbsp;<span class="text-yellow-600 dark:text-yellow-400">WITHIN</span> 150ms</div>
-            <div class="flex"><span class="text-slate-400 dark:text-slate-700 w-6 shrink-0">7</span> <span class="text-purple-600 dark:text-purple-400">END</span></div>
-            <div class="flex"><span class="text-slate-400 dark:text-slate-700 w-6 shrink-0">8</span> <span class="text-slate-300 dark:text-slate-400">|</span><span class="cursor-blink bg-blue-500 w-1.5 h-4 inline-block ml-0.5"></span></div>
+          <div class="p-8 font-mono text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+            <div class="flex"><span class="text-slate-300 dark:text-slate-800 w-6 shrink-0">1</span> <span class="text-purple-600 dark:text-purple-400 italic">// Requirement: Braking safety check</span></div>
+            <div class="flex"><span class="text-slate-300 dark:text-slate-800 w-6 shrink-0">2</span> <span class="text-purple-600 dark:text-purple-400 font-bold">RULE</span> <span class="text-blue-600 dark:text-blue-300">"Emergency_Response"</span></div>
+            <div class="flex"><span class="text-slate-300 dark:text-slate-800 w-6 shrink-0">3</span> <span class="text-purple-600 dark:text-purple-400 font-bold">IF</span> vehicle_speed > 30.0</div>
+            <div class="flex"><span class="text-slate-300 dark:text-slate-800 w-6 shrink-0">4</span> <span class="text-purple-600 dark:text-purple-400 font-bold">AND</span> collision_alert == <span class="text-red-500 dark:text-red-400">TRUE</span></div>
+            <div class="flex"><span class="text-slate-300 dark:text-slate-800 w-6 shrink-0">5</span> <span class="text-purple-600 dark:text-purple-400 font-bold">THEN</span></div>
+            <div class="flex"><span class="text-slate-300 dark:text-slate-800 w-6 shrink-0">6</span> &nbsp;&nbsp;<span class="text-yellow-600 dark:text-yellow-400 font-bold">ASSERT</span> brake_pressure > 80.0</div>
+            <div class="flex"><span class="text-slate-300 dark:text-slate-800 w-6 shrink-0">7</span> &nbsp;&nbsp;<span class="text-yellow-600 dark:text-yellow-400 font-bold">WITHIN</span> 150ms</div>
+            <div class="flex"><span class="text-slate-300 dark:text-slate-800 w-6 shrink-0">8</span> <span class="text-purple-600 dark:text-purple-400 font-bold">END</span></div>
+            <div class="flex"><span class="text-slate-300 dark:text-slate-800 w-6 shrink-0">9</span> <span class="cursor-blink bg-blue-500 w-1.5 h-4 inline-block"></span></div>
           </div>
         </div>
 
-        <!-- Visualization -->
-        <div class="lg:col-span-7 flex flex-col gap-6">
-          <div class="flex-grow bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden relative shadow-xl dark:shadow-2xl">
-            <div id="demo-overlay" class="absolute inset-0 bg-white/80 dark:bg-slate-950/80 backdrop-blur-sm z-20 flex items-center justify-center hidden">
-              <div class="flex flex-col items-center">
-                <div class="w-10 h-10 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
-                <span class="text-xs font-mono text-blue-600 dark:text-blue-400 tracking-widest uppercase">Executing Validation Engine...</span>
-              </div>
+        <!-- Engine Output -->
+        <div class="lg:col-span-7 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden relative shadow-2xl">
+          <div id="demo-overlay" class="absolute inset-0 bg-white/90 dark:bg-slate-950/90 backdrop-blur-sm z-20 flex items-center justify-center hidden text-center px-6">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+              <span class="text-xs font-mono text-blue-600 dark:text-blue-400 tracking-widest uppercase font-bold">Engine: Evaluating Cross-Signal Dependencies...</span>
             </div>
+          </div>
 
-            <div class="px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex items-center justify-between">
-              <span class="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-tight">Signal Timeline (ms)</span>
-              <div class="flex items-center space-x-4">
-                <div class="flex items-center space-x-1.5">
-                   <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-                   <span class="text-[10px] text-slate-500 font-mono uppercase">Alert</span>
-                </div>
-                <div class="flex items-center space-x-1.5">
-                   <span class="w-2 h-2 rounded-full bg-red-400"></span>
-                   <span class="text-[10px] text-slate-500 font-mono uppercase">Brake</span>
-                </div>
-              </div>
+          <div class="px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex items-center justify-between">
+            <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-widest font-bold">Real-Time_Behavior_Validation</span>
+            <div class="flex space-x-4">
+               <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
             </div>
+          </div>
 
-            <div class="p-8 h-full flex flex-col justify-center">
-              <svg viewBox="0 0 400 120" class="w-full h-32 overflow-visible mb-12">
-                <line x1="0" y1="100" x2="400" y2="100" stroke="currentColor" class="text-slate-200 dark:text-slate-800" stroke-width="1" />
-                <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-slate-200 dark:text-slate-800" stroke-width="1" />
-                <path d="M0 100 L120 100 L120 40 L280 40 L280 100 L400 100" fill="none" stroke="#3b82f6" stroke-width="2" class="signal-line" />
-                <path d="M0 100 L145 100 L145 20 L300 20 L300 100 L400 100" fill="none" stroke="#f87171" stroke-width="2" class="signal-line" style="animation-delay: 0.5s" />
-                <line x1="120" y1="0" x2="120" y2="100" stroke="currentColor" class="text-slate-300 dark:text-slate-700" stroke-dasharray="4" />
-                <line x1="145" y1="0" x2="145" y2="100" stroke="currentColor" class="text-slate-300 dark:text-slate-700" stroke-dasharray="4" />
-                <text x="125" y="10" font-family="monospace" font-size="8" fill="currentColor" class="text-slate-400 dark:text-slate-500">Δt = 25ms</text>
-              </svg>
+          <div class="p-10 flex flex-col justify-center h-full">
+            <svg viewBox="0 0 400 120" class="w-full h-40 overflow-visible mb-12">
+              <line x1="0" y1="100" x2="400" y2="100" stroke="currentColor" class="text-slate-200 dark:text-slate-800" stroke-width="1" />
+              <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-slate-200 dark:text-slate-800" stroke-width="1" />
+              <path d="M0 100 L120 100 L120 40 L280 40 L280 100 L400 100" fill="none" stroke="#3b82f6" stroke-width="2.5" class="signal-line" />
+              <path d="M0 100 L145 100 L145 20 L300 20 L300 100 L400 100" fill="none" stroke="#f87171" stroke-width="2.5" class="signal-line" style="animation-delay: 0.5s" />
+              <line x1="120" y1="0" x2="120" y2="100" stroke="currentColor" class="text-slate-300 dark:text-slate-700" stroke-dasharray="4" />
+              <line x1="145" y1="0" x2="145" y2="100" stroke="currentColor" class="text-slate-300 dark:text-slate-700" stroke-dasharray="4" />
+              <text x="125" y="10" font-family="monospace" font-size="9" fill="currentColor" class="text-blue-600 dark:text-blue-400 font-bold">Δt_behavior = 25ms</text>
+            </svg>
 
-              <div id="demo-result" class="p-5 bg-green-500/5 border border-green-500/20 rounded-lg flex items-start space-x-4 opacity-0 transition-opacity duration-500">
-                <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-600 dark:text-green-500 shrink-0">
-                  <i data-lucide="check-circle" class="w-6 h-6"></i>
-                </div>
-                <div>
-                  <div class="text-sm font-bold text-green-600 dark:text-green-400 mb-1" data-i18n="demo-pass">VALIDATION SUCCESSFUL</div>
-                  <div class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="demo-result-desc">
-                    Constraint met: Brake pressure exceeded threshold within 25ms of collision alert trigger. (Limit: 150ms)
-                  </div>
-                </div>
+            <div id="demo-result" class="p-6 bg-green-500/5 border border-green-500/20 rounded-xl flex items-start space-x-6 opacity-0 transition-opacity duration-500">
+              <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-600 dark:text-green-500 shrink-0">
+                <i data-lucide="check-circle" class="w-7 h-7"></i>
+              </div>
+              <div>
+                <div class="text-sm font-bold text-green-600 dark:text-green-400 mb-2 uppercase tracking-widest">Behavior Verified</div>
+                <p class="text-[12px] text-slate-600 dark:text-slate-400 leading-relaxed font-mono">
+                  REQUIREMENT "Emergency_Response" MET.<br>
+                  Observed reaction time 25ms < threshold 150ms.<br>
+                  Confidence level: 99.999% (Deterministic Evaluation).
+                </p>
               </div>
             </div>
           </div>
@@ -307,35 +324,35 @@
     </div>
   </section>
 
-  <!-- 应用案例 (Use Cases) -->
-  <section id="use-cases" class="py-24 px-6 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/20">
+  <!-- Problem-Driven Scenarios (Use Cases) -->
+  <section id="scenarios" class="py-24 px-6 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/20">
     <div class="max-w-7xl mx-auto">
       <div class="mb-16">
-        <h2 class="text-3xl font-bold mb-4 tracking-tight text-slate-900 dark:text-white" data-i18n="uc-title">Target Sectors</h2>
-        <p class="text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed" data-i18n="uc-subtitle">Deployable in environments where system failure is not an option.</p>
+        <h2 class="text-3xl font-bold mb-4 tracking-tight" data-i18n="uc-title">Engineering Scenarios</h2>
+        <p class="text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed" data-i18n="uc-subtitle">Addressing the most critical validation challenges in complex system engineering.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="group p-10 border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-slate-900/50 hover:border-blue-500/50 hover:shadow-lg dark:hover:shadow-none transition-all duration-300">
-          <i data-lucide="car" class="w-10 h-10 text-blue-600 dark:text-blue-500 mb-8"></i>
-          <h3 class="text-xl font-bold mb-4 text-slate-900 dark:text-white" data-i18n="uc-auto-title">Automotive</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="uc-auto-desc">Full-cycle validation for ADAS systems, powertrain logic, and sophisticated in-vehicle networking.</p>
+        <div class="group p-10 border border-slate-200 dark:border-slate-800 rounded-3xl bg-white dark:bg-slate-900/50 hover:border-blue-500/50 transition-all duration-300">
+          <i data-lucide="clock" class="w-10 h-10 text-blue-600 dark:text-blue-500 mb-8"></i>
+          <h3 class="text-xl font-bold mb-4" data-i18n="uc-timing-title">Timing-Critical Validation</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="uc-timing-desc">Millisecond-level guarantees for real-time system responses. Validating temporal constraints that traditional testing misses.</p>
         </div>
-        <div class="group p-10 border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-slate-900/50 hover:border-blue-500/50 hover:shadow-lg dark:hover:shadow-none transition-all duration-300">
-          <i data-lucide="cpu" class="text-blue-600 dark:text-blue-500 mb-8 w-10 h-10"></i>
-          <h3 class="text-xl font-bold mb-4 text-slate-900 dark:text-white" data-i18n="uc-embed-title">Embedded Electronics</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="uc-embed-desc">Verification of critical embedded controllers where timing and state-machine transitions are paramount.</p>
+        <div class="group p-10 border border-slate-200 dark:border-slate-800 rounded-3xl bg-white dark:bg-slate-900/50 hover:border-blue-500/50 transition-all duration-300">
+          <i data-lucide="shield-alert" class="w-10 h-10 text-blue-600 dark:text-blue-500 mb-8"></i>
+          <h3 class="text-xl font-bold mb-4" data-i18n="uc-safety-title">Safety-Critical Behavior</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="uc-safety-desc">Ensuring fail-safe states and hazard mitigation logic are executed correctly across all system states.</p>
         </div>
-        <div class="group p-10 border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-slate-900/50 hover:border-blue-500/50 hover:shadow-lg dark:hover:shadow-none transition-all duration-300">
-          <i data-lucide="factory" class="text-blue-600 dark:text-blue-500 mb-8 w-10 h-10"></i>
-          <h3 class="text-xl font-bold mb-4 text-slate-900 dark:text-white" data-i18n="uc-hw-title">Industrial Automation</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="uc-hw-desc">Testing of PLCs and high-speed industrial robotics protocols under real-world interference scenarios.</p>
+        <div class="group p-10 border border-slate-200 dark:border-slate-800 rounded-3xl bg-white dark:bg-slate-900/50 hover:border-blue-500/50 transition-all duration-300">
+          <i data-lucide="git-branch" class="w-10 h-10 text-blue-600 dark:text-blue-500 mb-8"></i>
+          <h3 class="text-xl font-bold mb-4" data-i18n="uc-cross-title">Cross-Signal Dependencies</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="uc-cross-desc">Verifying complex logic that spans multiple protocols (CAN, ETH, Analog) and asynchronous signal flows.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 页脚 (Footer) -->
+  <!-- Footer -->
   <footer id="contact" class="py-20 px-6 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center">
       <div class="mb-12 md:mb-0">
@@ -343,163 +360,156 @@
           <div class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center">
             <i data-lucide="shield-check" class="text-white w-4 h-4"></i>
           </div>
-          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">VeriAI Systems</span>
+          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white uppercase tracking-widest">VeriAI Systems</span>
         </div>
-        <p class="text-[11px] text-slate-500 dark:text-slate-600 font-mono tracking-wider uppercase mb-2" data-i18n="footer-rights">© 2026 VeriAI Systems GmbH</p>
-        <p class="text-[10px] text-slate-400 dark:text-slate-700 font-mono uppercase">System Engineering Excellence</p>
+        <p class="text-[10px] text-slate-500 dark:text-slate-600 font-mono uppercase tracking-[0.2em]" data-i18n="footer-rights">© 2026 VeriAI Systems GmbH | Engineering Excellence</p>
       </div>
       
-      <div class="grid grid-cols-2 gap-16 text-sm">
-        <div>
-          <h4 class="font-bold mb-6 text-slate-400 uppercase tracking-widest text-[10px]" data-i18n="footer-contact-title">Contact</h4>
-          <p class="text-slate-600 dark:text-slate-500 font-mono">engineering@veriai-systems.com</p>
-        </div>
-        <div>
-          <h4 class="font-bold mb-6 text-slate-400 uppercase tracking-widest text-[10px]" data-i18n="footer-legal-title">Legal</h4>
-          <a href="#" class="text-slate-600 dark:text-slate-500 hover:text-blue-600 transition-colors block mb-2" data-i18n="footer-imprint">Imprint</a>
-          <a href="#" class="text-slate-600 dark:text-slate-500 hover:text-blue-600 transition-colors block" data-i18n="footer-privacy">Privacy Policy</a>
-        </div>
+      <div class="flex space-x-12 text-sm font-mono uppercase tracking-widest text-slate-500">
+        <a href="mailto:engineering@veriai-systems.com" class="hover:text-blue-500 transition-colors">Contact</a>
+        <a href="#" class="hover:text-blue-500 transition-colors">Legal</a>
       </div>
     </div>
   </footer>
 
   <script>
-    // 初始化图标
     lucide.createIcons();
 
-    // 国际化翻译数据
     const translations = {
       en: {
-        "nav-platform": "Platform",
-        "nav-demo": "Demo",
-        "nav-use-cases": "Use Cases",
-        "nav-contact": "Contact",
-        "hero-tag": "V2.4 ENGINE ACTIVE",
-        "hero-title": "Rule-Driven Validation for System Engineering",
-        "hero-subtitle": "Transforming requirements into executable validation rules. A dedicated tool for signal-based testing and complex hardware validation.",
-        "diag-req": "Requirements",
-        "diag-dsl": "Rule DSL",
-        "diag-engine": "Engine",
-        "diag-report": "Validation",
-        "plat-title": "Built for Engineering Precision",
-        "plat-subtitle": "Our platform bridges the gap between high-level requirements and low-level signal validation, providing a deterministic environment for system testing.",
-        "plat-feature-1": "Real-time Deterministic Execution",
-        "plat-feature-2": "Multi-protocol Support (CAN/LIN/ETH)",
-        "plat-feature-3": "Temporal Logic Evaluation",
-        "mod-dsl-title": "Domain-Specific Language",
-        "mod-dsl-desc": "A powerful DSL designed specifically for expressing validation rules without the overhead of general-purpose programming.",
-        "mod-engine-title": "Evaluation Engine",
-        "mod-engine-desc": "High-throughput engine capable of processing thousands of signals per second with microsecond precision.",
-        "mod-signals-title": "Signal Analytics",
-        "mod-signals-desc": "Built-in tools for signal correlation, frequency analysis, and automated anomaly detection across time series.",
-        "mod-integ-title": "Integration Stack",
-        "mod-integ-desc": "Ready-to-use drivers for industrial hardware and seamless integration with CI/CD engineering pipelines.",
-        "demo-title": "Validation Demo",
-        "demo-subtitle": "See how rules translate to real-time signal validation outcomes.",
-        "demo-run": "Execute Rule",
-        "demo-pass": "VALIDATION SUCCESSFUL",
-        "demo-result-desc": "Constraint met: Brake pressure exceeded threshold within 25ms of collision alert trigger. (Limit: 150ms)",
-        "uc-title": "Target Sectors",
-        "uc-subtitle": "Deployable in environments where system failure is not an option.",
-        "uc-auto-title": "Automotive",
-        "uc-auto-desc": "Full-cycle validation for ADAS systems, powertrain logic, and sophisticated in-vehicle networking.",
-        "uc-embed-title": "Embedded Electronics",
-        "uc-embed-desc": "Verification of critical embedded controllers where timing and state-machine transitions are paramount.",
-        "uc-hw-title": "Industrial Automation",
-        "uc-hw-desc": "Testing of PLCs and high-speed industrial robotics protocols under real-world interference scenarios.",
-        "footer-rights": "© 2026 VeriAI Systems GmbH",
-        "footer-contact-title": "Contact",
-        "footer-legal-title": "Legal",
-        "footer-imprint": "Imprint",
-        "footer-privacy": "Privacy Policy"
+        "nav-philosophy": "Philosophy",
+        "nav-paradigm": "Paradigm",
+        "nav-demo": "Execution",
+        "nav-scenarios": "Scenarios",
+        "hero-tag": "DETERMINISTIC VALIDATION ACTIVE",
+        "hero-title": "Executable Validation for Complex Systems",
+        "hero-subtitle": "Bridging the gap between high-level requirements and verified system behavior. A deterministic engine for the next generation of engineering paradigms.",
+        "hero-use-1": "Safety-critical automotive behavior",
+        "hero-use-2": "Embedded controllers with real signals",
+        "hero-use-3": "Cross-system interactions",
+        "diag-dsl-title": "DSL: The Interface",
+        "diag-dsl-desc": "The central abstraction layer where requirements become executable logic.",
+        "diag-engine-title": "Validation Engine",
+        "diag-engine-desc": "High-performance evaluation core transforming rules into deterministic outcomes.",
+        "diag-signals-title": "Signal Domain",
+        "diag-signals-desc": "Direct validation of complex multi-signal behaviors in real-world environments.",
+        "phil-tag": "Engineering Philosophy",
+        "phil-title": "Modern systems are defined by behavior, not code.",
+        "phil-left-tag": "Traditional Testing",
+        "phil-left-desc": "Validates specific implementations and unit-level functions. Often disconnected from high-level system requirements, leading to coverage gaps in complex interactions.",
+        "phil-right-tag": "VeriAI Paradigm",
+        "phil-right-desc": "Validates system-level behavior defined directly by requirements. We provide the deterministic engine that ensures the 'physical world' behaves exactly as specified in the 'rule world.'",
+        "phil-boundary": "System Boundary: The system observes and validates signals, but does not control or intrude upon the environment itself.",
+        "paradigm-title": "The Validation Paradigm",
+        "paradigm-subtitle": "An integrated environment for translating requirements into verifiable system truth.",
+        "mod-dsl-title": "DSL: The Unified Interface",
+        "mod-dsl-desc": "Expressing complex system logic as verifiable rules. Our DSL is the bridge between human requirement and machine verification.",
+        "mod-engine-title": "Deterministic Engine",
+        "mod-engine-desc": "Eliminating uncertainty. Our evaluation engine ensures that every requirement is validated against real-time signals with microsecond precision.",
+        "mod-integ-title": "Requirement Provenance",
+        "mod-integ-desc": "Direct traceability from signal-level validation back to high-level requirements. Every pass/fail has a behavioral root cause.",
+        "demo-title": "Executable Requirement Demo",
+        "demo-subtitle": "Observe how a high-level safety requirement is validated against real-time cross-signal behavior.",
+        "demo-run": "Verify Behavior",
+        "uc-title": "Engineering Scenarios",
+        "uc-subtitle": "Addressing the most critical validation challenges in complex system engineering.",
+        "uc-timing-title": "Timing-Critical Validation",
+        "uc-timing-desc": "Millisecond-level guarantees for real-time system responses. Validating temporal constraints that traditional testing misses.",
+        "uc-safety-title": "Safety-Critical Behavior",
+        "uc-safety-desc": "Ensuring fail-safe states and hazard mitigation logic are executed correctly across all system states.",
+        "uc-cross-title": "Cross-Signal Dependencies",
+        "uc-cross-desc": "Verifying complex logic that spans multiple protocols (CAN, ETH, Analog) and asynchronous signal flows.",
+        "footer-rights": "© 2026 VeriAI Systems GmbH | Engineering Excellence"
       },
       de: {
-        "nav-platform": "Plattform",
-        "nav-demo": "Demo",
-        "nav-use-cases": "Anwendungsfälle",
-        "nav-contact": "Kontakt",
-        "hero-tag": "V2.4 ENGINE AKTIV",
-        "hero-title": "Regelbasierte Validierung für Systemtechnik",
-        "hero-subtitle": "Anforderungen in ausführbare Validierungsregeln umwandeln. Ein dediziertes Tool für signalbasierte Tests und komplexe Hardwarevalidierung.",
-        "diag-req": "Anforderungen",
-        "diag-dsl": "Regel-DSL",
-        "diag-engine": "Engine",
-        "diag-report": "Validierung",
-        "plat-title": "Präzision für Ingenieure",
-        "plat-subtitle": "Unsere Plattform schließt die Lücke zwischen High-Level-Anforderungen und Low-Level-Signalvalidierung.",
-        "plat-feature-1": "Echtzeit-deterministische Ausführung",
-        "plat-feature-2": "Multiprotokoll-Unterstützung (CAN/LIN/ETH)",
-        "plat-feature-3": "Temporale Logikauswertung",
-        "mod-dsl-title": "Domänenspezifische Sprache",
-        "mod-dsl-desc": "Eine leistungsstarke DSL, die speziell für Validierungsregeln ohne den Overhead allgemeiner Programmierung entwickelt wurde.",
-        "mod-engine-title": "Evaluierungs-Engine",
-        "mod-engine-desc": "Hochdurchsatz-Engine, die Tausende von Signalen pro Sekunde mit Mikrosekundenpräzision verarbeitet.",
-        "mod-signals-title": "Signal-Analyse",
-        "mod-signals-desc": "Integrierte Tools für Signalkorrelation, Frequenzanalyse und automatisierte Anomalieerkennung.",
-        "mod-integ-title": "Integrations-Stack",
-        "mod-integ-desc": "Gebrauchsfertige Treiber für Industrie-Hardware und nahtlose Integration in CI/CD-Pipelines.",
-        "demo-title": "Validierungs-Demo",
-        "demo-subtitle": "Sehen Sie, wie Regeln in Echtzeit-Validierungsergebnisse übersetzt werden.",
-        "demo-run": "Regel ausführen",
-        "demo-pass": "VALIDIERUNG ERFOLGREICH",
-        "demo-result-desc": "Bedingung erfüllt: Bremsdruck überschritt Schwellenwert innerhalb von 25ms nach Kollisionswarnung. (Limit: 150ms)",
-        "uc-title": "Zielbranchen",
-        "uc-subtitle": "Einsetzbar in Umgebungen, in denen Systemfehler keine Option sind.",
-        "uc-auto-title": "Automobilindustrie",
-        "uc-auto-desc": "Validierung von ADAS-Systemen, Antriebsstranglogik und vernetzten Fahrzeugen.",
-        "uc-embed-title": "Embedded-Elektronik",
-        "uc-embed-desc": "Verifizierung kritischer Controller, bei denen Timing und Zustandsübergänge entscheidend sind.",
-        "uc-hw-title": "Industrieautomation",
-        "uc-hw-desc": "Testen von SPS und Robotikprotokollen unter realen Störszenarien.",
-        "footer-rights": "© 2026 VeriAI Systems GmbH",
-        "footer-contact-title": "Kontakt",
-        "footer-legal-title": "Rechtliches",
-        "footer-imprint": "Impressum",
-        "footer-privacy": "Datenschutz"
+        "nav-philosophy": "Philosophie",
+        "nav-paradigm": "Paradigma",
+        "nav-demo": "Ausführung",
+        "nav-scenarios": "Szenarien",
+        "hero-tag": "DETERMINISTISCHE VALIDIERUNG AKTIV",
+        "hero-title": "Ausführbare Validierung für komplexe Systeme",
+        "hero-subtitle": "Die Lücke zwischen Anforderungen und verifiziertem Systemverhalten schließen. Eine deterministische Engine für die nächste Generation von Engineering-Paradigmen.",
+        "hero-use-1": "Sicherheitskritisches Fahrzeugverhalten",
+        "hero-use-2": "Embedded Controller mit Realsignalen",
+        "hero-use-3": "Systemübergreifende Interaktionen",
+        "diag-dsl-title": "DSL: Die Schnittstelle",
+        "diag-dsl-desc": "Die zentrale Abstraktionsebene, auf der Anforderungen zu ausführbarer Logik werden.",
+        "diag-engine-title": "Validierungs-Engine",
+        "diag-engine-desc": "Hochleistungskern, der Regeln in deterministische Ergebnisse transformiert.",
+        "diag-signals-title": "Signal-Domäne",
+        "diag-signals-desc": "Direkte Validierung komplexer Multisignal-Verhaltensweisen in realen Umgebungen.",
+        "phil-tag": "Engineering-Philosophie",
+        "phil-title": "Moderne Systeme werden durch Verhalten definiert, nicht durch Code.",
+        "phil-left-tag": "Traditionelles Testen",
+        "phil-left-desc": "Validiert spezifische Implementierungen und Funktionen auf Unit-Ebene. Oft entkoppelt von Systemanforderungen, was zu Abdeckungslücken führt.",
+        "phil-right-tag": "VeriAI Paradigma",
+        "phil-right-desc": "Validiert Systemverhalten direkt aus Anforderungen. Wir liefern die Engine, die sicherstellt, dass sich die 'physische Welt' exakt wie spezifiziert verhält.",
+        "phil-boundary": "Systemgrenze: Das System beobachtet und validiert Signale, kontrolliert oder beeinflusst jedoch nicht die Umgebung selbst.",
+        "paradigm-title": "Das Validierungs-Paradigma",
+        "paradigm-subtitle": "Eine integrierte Umgebung zur Übersetzung von Anforderungen in verifizierbare Systemwahrheit.",
+        "mod-dsl-title": "DSL: Die Einheitliche Schnittstelle",
+        "mod-dsl-desc": "Komplexe Systemlogik als verifizierbare Regeln ausdrücken. Unsere DSL ist die Brücke zwischen Anforderung und Verifikation.",
+        "mod-engine-title": "Deterministische Engine",
+        "mod-engine-desc": "Ungewissheit eliminieren. Unsere Engine validiert jede Anforderung gegen Echtzeitsignale mit Mikrosekundenpräzision.",
+        "mod-integ-title": "Anforderungs-Provenienz",
+        "mod-integ-desc": "Direkte Rückverfolgbarkeit von der Signalvalidierung bis zu den High-Level-Anforderungen.",
+        "demo-title": "Demo: Ausführbare Anforderungen",
+        "demo-subtitle": "Beobachten Sie, wie eine Sicherheitsanforderung gegen Echtzeit-Signalverhalten validiert wird.",
+        "demo-run": "Verhalten verifizieren",
+        "uc-title": "Engineering-Szenarien",
+        "uc-subtitle": "Lösung der kritischsten Validierungsherausforderungen im komplexen System-Engineering.",
+        "uc-timing-title": "Zeitkritische Validierung",
+        "uc-timing-desc": "Millisekundengarantien für Systemantworten. Validierung temporaler Constraints, die traditionelle Tests übersehen.",
+        "uc-safety-title": "Sicherheitskritisches Verhalten",
+        "uc-safety-desc": "Sicherstellung von Fail-Safe-Zuständen und Risikominderungslogik über alle Systemzustände hinweg.",
+        "uc-cross-title": "Signalübergreifende Abhängigkeiten",
+        "uc-cross-desc": "Verifizierung komplexer Logik über mehrere Protokolle (CAN, ETH, Analog) und asynchrone Signalflüsse.",
+        "footer-rights": "© 2026 VeriAI Systems GmbH | Engineering Excellence"
       },
       zh: {
-        "nav-platform": "平台",
-        "nav-demo": "演示",
-        "nav-use-cases": "应用场景",
-        "nav-contact": "联系我们",
-        "hero-tag": "V2.4 引擎已激活",
-        "hero-title": "面向系统工程的规则驱动验证",
-        "hero-subtitle": "将需求转化为可执行的验证规则。专为基于信号的测试和复杂硬件验证设计的工程工具。",
-        "diag-req": "系统需求",
-        "diag-dsl": "规则 DSL",
-        "diag-engine": "执行引擎",
-        "diag-report": "结果验证",
-        "plat-title": "为工程精度而生",
-        "plat-subtitle": "我们的平台弥补了高层需求与底层信号验证之间的鸿沟，为系统测试提供确定性环境。",
-        "plat-feature-1": "实时确定性执行",
-        "plat-feature-2": "多协议支持 (CAN/LIN/ETH)",
-        "plat-feature-3": "时序逻辑评估",
-        "mod-dsl-title": "领域特定语言 (DSL)",
-        "mod-dsl-desc": "专为表达验证规则而设计的强大 DSL，无需通用编程语言的复杂开销。",
-        "mod-engine-title": "评估引擎",
-        "mod-engine-desc": "高吞吐量引擎，能够以微秒级精度每秒处理数千个信号。",
-        "mod-signals-title": "信号分析",
-        "mod-signals-desc": "内置信号相关性分析、频率分析及跨时间序列的自动异常检测工具。",
-        "mod-integ-title": "集成堆栈",
-        "mod-integ-desc": "现成的工业硬件驱动程序，与 CI/CD 工程流水线无缝集成。",
-        "demo-title": "验证演示",
-        "demo-subtitle": "了解规则如何转化为实时的信号验证结果。",
-        "demo-run": "执行规则",
-        "demo-pass": "验证成功",
-        "demo-result-desc": "满足约束：制动压力在碰撞警报触发后的 25ms 内超过阈值。（限制：150ms）",
-        "uc-title": "目标领域",
-        "uc-subtitle": "部署于对系统故障零容忍的关键环境。",
-        "uc-auto-title": "汽车工程",
-        "uc-auto-desc": "针对 ADAS 系统、动力总成逻辑和复杂的车载网络提供全周期验证。",
-        "uc-embed-title": "嵌入式电子",
-        "uc-embed-desc": "验证关键的嵌入式控制器，确保时序和状态机转换的绝对准确。",
-        "uc-hw-title": "工业自动化",
-        "uc-hw-desc": "在真实干扰场景下测试 PLC 和高速工业机器人协议。",
-        "footer-rights": "© 2026 VeriAI Systems GmbH",
-        "footer-contact-title": "联系方式",
-        "footer-legal-title": "法律信息",
-        "footer-imprint": "法律声明",
-        "footer-privacy": "隐私政策"
+        "nav-philosophy": "工程哲学",
+        "nav-paradigm": "验证范式",
+        "nav-demo": "执行演示",
+        "nav-scenarios": "应用场景",
+        "hero-tag": "确定性验证引擎已激活",
+        "hero-title": "复杂系统的可执行验证",
+        "hero-subtitle": "弥合高层需求与已验证系统行为之间的鸿沟。为下一代工程范式打造的确定性验证引擎。",
+        "hero-use-1": "汽车安全关键行为验证",
+        "hero-use-2": "带真实信号的嵌入式控制器测试",
+        "hero-use-3": "跨系统交互行为验证",
+        "diag-dsl-title": "DSL: 核心交互界面",
+        "diag-dsl-desc": "将需求转化为可执行逻辑的核心抽象层。",
+        "diag-engine-title": "验证引擎",
+        "diag-engine-desc": "将规则转化为确定性结果的高性能评估核心。",
+        "diag-signals-title": "信号域",
+        "diag-signals-desc": "在真实物理环境中直接验证复杂的多信号交互行为。",
+        "phil-tag": "工程哲学",
+        "phil-title": "现代系统由行为定义，而非代码。",
+        "phil-left-tag": "传统测试",
+        "phil-left-desc": "侧重于验证具体的代码实现和单元功能。通常与高层系统需求脱节，导致复杂交互中的覆盖盲区。",
+        "phil-right-tag": "VeriAI 范式",
+        "phil-right-desc": "直接验证由需求定义的系统级行为。我们提供确定性引擎，确保“物理世界”的表现与“规则世界”的定义完全一致。",
+        "phil-boundary": "系统边界：系统仅观察并验证信号，不控制或侵入环境本身。",
+        "paradigm-title": "验证范式",
+        "paradigm-subtitle": "将需求转化为可验证系统真理的集成环境。",
+        "mod-dsl-title": "DSL: 统一交互界面",
+        "mod-dsl-desc": "将复杂的系统逻辑表达为可验证的规则。我们的 DSL 是人类需求与机器验证之间的桥梁。",
+        "mod-engine-title": "确定性引擎",
+        "mod-engine-desc": "消除不确定性。我们的评估引擎确保每一项需求都能针对实时信号进行微秒级的精准验证。",
+        "mod-integ-title": "需求溯源",
+        "mod-integ-desc": "从信号级验证直接溯源至高层需求。每一个测试结果都有明确的行为根因。",
+        "demo-title": "可执行需求演示",
+        "demo-subtitle": "观察高层安全需求如何针对实时的跨信号行为进行验证。",
+        "demo-run": "验证行为",
+        "uc-title": "工程验证场景",
+        "uc-subtitle": "解决复杂系统工程中最关键的验证挑战。",
+        "uc-timing-title": "时序关键验证",
+        "uc-timing-desc": "为实时系统响应提供毫秒级保证。验证传统测试手段难以覆盖的时间约束。",
+        "uc-safety-title": "安全关键行为",
+        "uc-safety-desc": "确保故障安全状态和风险缓解逻辑在所有系统状态下均能正确执行。",
+        "uc-cross-title": "跨信号依赖验证",
+        "uc-cross-desc": "验证跨越多种协议（CAN、以太网、模拟信号）及异步信号流的复杂逻辑。",
+        "footer-rights": "© 2026 VeriAI Systems GmbH | 卓越工程"
       }
     };
 
@@ -524,9 +534,7 @@
       const menu = document.getElementById('mobile-menu');
       const iconOpen = document.getElementById('menu-icon-open');
       const iconClose = document.getElementById('menu-icon-close');
-      
       const isOpen = !menu.classList.contains('translate-x-full');
-      
       if (isOpen) {
         menu.classList.add('translate-x-full');
         iconOpen.classList.remove('hidden');
@@ -540,29 +548,19 @@
       }
     }
 
-    // 初始化主题
     const savedTheme = localStorage.getItem('theme') || 'dark';
-    if (savedTheme === 'light') {
-      document.documentElement.classList.remove('dark');
-    }
+    if (savedTheme === 'light') document.documentElement.classList.remove('dark');
 
     function runDemo() {
       const btn = document.getElementById('run-btn');
       const overlay = document.getElementById('demo-overlay');
       const result = document.getElementById('demo-result');
-      
       btn.disabled = true;
       btn.classList.add('opacity-50');
       overlay.classList.remove('hidden');
       result.classList.add('opacity-0');
-
       const paths = document.querySelectorAll('.signal-line');
-      paths.forEach(p => {
-        p.style.animation = 'none';
-        p.offsetHeight;
-        p.style.animation = null;
-      });
-
+      paths.forEach(p => { p.style.animation = 'none'; p.offsetHeight; p.style.animation = null; });
       setTimeout(() => {
         overlay.classList.add('hidden');
         btn.disabled = false;
