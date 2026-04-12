@@ -58,6 +58,9 @@
     .dsl-core-circle {
       background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
     }
+    section[id] {
+      scroll-margin-top: 80px;
+    }
   </style>
 </head>
 <body class="grid-bg min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
@@ -94,6 +97,9 @@
           <button onclick="setLang('de')" id="lang-de" class="text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors">DE</button>
           <button onclick="setLang('zh')" id="lang-zh" class="text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors">中文</button>
         </div>
+        <button onclick="signOut()" title="Lock session" class="hidden md:flex p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 dark:text-slate-600 hover:text-slate-600 dark:hover:text-slate-400 transition-colors">
+          <i data-lucide="lock" class="w-4 h-4"></i>
+        </button>
       </div>
     </div>
   </nav>
@@ -953,6 +959,11 @@
     }
     
     setLang('en');
+
+    function signOut() {
+      localStorage.removeItem('auth');
+      window.location.replace('index.html');
+    }
   </script>
 </body>
 </html>
