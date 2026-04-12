@@ -254,6 +254,9 @@
       <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mt-4" data-i18n="sol-ai-desc">
         Requirements written in natural language are parsed into structured DSL rules through controlled transformation logic, enabling direct validation of real-world system behavior.
       </p>
+      <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mt-4" data-i18n="sol-opt-desc">
+        A metrics-driven optimization engine automatically selects which validations to re-execute — targeting 30–50% reduction in execution cost while retaining critical defect detection.
+      </p>
       <!-- Trust Anchor -->
       <p class="text-xs font-mono text-slate-400 mt-10" data-i18n="sol-trust-anchor">
         Designed for real-world signal validation environments (CAN, Ethernet, Analog)
@@ -327,6 +330,27 @@
           </div>
           <h3 class="text-lg font-bold mb-3" data-i18n="mod-integ-title">Requirement Provenance</h3>
           <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="mod-integ-desc">Direct traceability from signal-level validation back to high-level requirements. Every pass/fail has a behavioral root cause.</p>
+        </div>
+        <div class="p-8 border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-slate-900/40 hover:border-blue-500/50 transition-all group">
+          <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center mb-6 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+            <i data-lucide="database"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-3" data-i18n="mod-replay-title">Multi-source Replay</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="mod-replay-desc">Replay real-world CAN logs, CSV timelines, and UART traces through a unified adapter framework. One normalized frame format across all data sources.</p>
+        </div>
+        <div class="p-8 border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-slate-900/40 hover:border-blue-500/50 transition-all group">
+          <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center mb-6 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+            <i data-lucide="bar-chart-2"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-3" data-i18n="mod-optim-title">Validation Optimization</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="mod-optim-desc">Metrics-driven selection engine automatically decides which validations to re-execute. Targets 30–50% reduction in execution cost while retaining critical defect detection.</p>
+        </div>
+        <div class="p-8 border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-slate-900/40 hover:border-blue-500/50 transition-all group">
+          <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center mb-6 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+            <i data-lucide="alert-circle"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-3" data-i18n="mod-quality-title">Signal Quality Diagnostics</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="mod-quality-desc">Distinguishes system failures from data-quality issues. UNKNOWN and WEAK verdicts prevent false failures caused by stale or missing signal data.</p>
         </div>
       </div>
     </div>
@@ -521,6 +545,20 @@
             No. The system is designed to operate locally with controlled transformation logic. This ensures deterministic behavior, reproducibility, and suitability for safety-critical environments.
           </p>
         </div>
+        <!-- Q10 -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3" data-i18n="faq-q10">Does the platform support real hardware data such as CAN logs or UART traces?</h3>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm" data-i18n="faq-a10">
+            Yes. The platform includes replay adapters for CAN candump logs (with DBC decoding), CSV signal timelines, and UART logs. All sources are normalized into a unified frame format, allowing the same validation rules to run across heterogeneous data inputs.
+          </p>
+        </div>
+        <!-- Q11 -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3" data-i18n="faq-q11">How does the validation optimization loop work?</h3>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm" data-i18n="faq-a11">
+            The platform first executes a full baseline run and collects per-test metrics — failure rate, execution time, and requirement coverage. A deterministic decision engine then selects which validations require re-execution. The optimized run executes only the selected subset, targeting 30–50% cost reduction while retaining detection of critical failures.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -640,6 +678,12 @@
         "mod-engine-desc": "Eliminating uncertainty. Our evaluation engine ensures that every requirement is validated against real-time signals with microsecond precision.",
         "mod-integ-title": "Requirement Provenance",
         "mod-integ-desc": "Direct traceability from signal-level validation back to high-level requirements. Every pass/fail has a behavioral root cause.",
+        "mod-replay-title": "Multi-source Replay",
+        "mod-replay-desc": "Replay real-world CAN logs, CSV timelines, and UART traces through a unified adapter framework. One normalized frame format across all data sources.",
+        "mod-optim-title": "Validation Optimization",
+        "mod-optim-desc": "Metrics-driven selection engine automatically decides which validations to re-execute. Targets 30–50% reduction in execution cost while retaining critical defect detection.",
+        "mod-quality-title": "Signal Quality Diagnostics",
+        "mod-quality-desc": "Distinguishes system failures from data-quality issues. UNKNOWN and WEAK verdicts prevent false failures caused by stale or missing signal data.",
         "demo-title": "Executable Requirement Demo",
         "demo-subtitle": "Observe how a high-level safety requirement is validated against real-time cross-signal behavior.",
         "demo-input-source": "Input: Natural language requirement → Structured DSL transformation",
@@ -676,6 +720,11 @@
         "faq-a8": "The system maps structured natural language patterns into deterministic DSL rules. The focus is not on general AI interpretation, but on precise, unambiguous transformation into executable validation logic.",
         "faq-q9": "Does this rely on cloud-based AI models?",
         "faq-a9": "No. The system is designed to operate locally with controlled transformation logic. This ensures deterministic behavior, reproducibility, and suitability for safety-critical environments.",
+        "faq-q10": "Does the platform support real hardware data such as CAN logs or UART traces?",
+        "faq-a10": "Yes. The platform includes replay adapters for CAN candump logs (with DBC decoding), CSV signal timelines, and UART logs. All sources are normalized into a unified frame format, allowing the same validation rules to run across heterogeneous data inputs.",
+        "faq-q11": "How does the validation optimization loop work?",
+        "faq-a11": "The platform first executes a full baseline run and collects per-test metrics — failure rate, execution time, and requirement coverage. A deterministic decision engine then selects which validations require re-execution. The optimized run executes only the selected subset, targeting 30–50% cost reduction while retaining detection of critical failures.",
+        "sol-opt-desc": "A metrics-driven optimization engine automatically selects which validations to re-execute — targeting 30–50% reduction in execution cost while retaining critical defect detection.",
         "contact-title": "Get in touch",
         "contact-subtitle": "Direct channels — no forms, no intermediaries.",
         "contact-eng-label": "Engineering inquiries",
@@ -738,6 +787,12 @@
         "mod-engine-desc": "Ungewissheit eliminieren. Unsere Engine validiert jede Anforderung gegen Echtzeitsignale mit Mikrosekundenpräzision.",
         "mod-integ-title": "Anforderungs-Provenienz",
         "mod-integ-desc": "Direkte Rückverfolgbarkeit von der Signalvalidierung bis zu den High-Level-Anforderungen.",
+        "mod-replay-title": "Multi-Source-Replay",
+        "mod-replay-desc": "Replay realer CAN-Logs, CSV-Zeitreihen und UART-Traces über ein einheitliches Adapter-Framework. Ein normiertes Frame-Format für alle Datenquellen.",
+        "mod-optim-title": "Validierungsoptimierung",
+        "mod-optim-desc": "Metrik-gesteuerter Selektions-Engine entscheidet automatisch, welche Validierungen erneut ausgeführt werden. Ziel: 30–50 % Reduktion des Ausführungsaufwands bei erhaltener Fehlererkennung.",
+        "mod-quality-title": "Signalqualitäts-Diagnostik",
+        "mod-quality-desc": "Unterscheidet Systemfehler von Datenqualitätsproblemen. UNKNOWN- und WEAK-Verdicts verhindern Falschausfälle durch veraltete oder fehlende Signaldaten.",
         "demo-title": "Demo: Ausführbare Anforderungen",
         "demo-subtitle": "Beobachten Sie, wie eine Sicherheitsanforderung gegen Echtzeit-Signalverhalten validiert wird.",
         "demo-input-source": "Input: Natürlichsprachliche Anforderung → Strukturierte DSL-Transformation",
@@ -774,6 +829,11 @@
         "faq-a8": "Das System bildet strukturierte natürlichsprachliche Muster auf deterministische DSL-Regeln ab. Der Fokus liegt nicht auf allgemeiner KI-Interpretation, sondern auf der präzisen, eindeutigen Transformation in ausführbare Validierungslogik.",
         "faq-q9": "Ist das System auf cloudbasierte KI-Modelle angewiesen?",
         "faq-a9": "Nein. Das System ist darauf ausgelegt, lokal mit kontrollierter Transformationslogik zu arbeiten. Dies gewährleistet deterministisches Verhalten, Reproduzierbarkeit und Eignung für sicherheitskritische Umgebungen.",
+        "faq-q10": "Unterstützt die Plattform reale Hardware-Daten wie CAN-Logs oder UART-Traces?",
+        "faq-a10": "Ja. Die Plattform enthält Replay-Adapter für CAN-Candump-Logs (mit DBC-Dekodierung), CSV-Signalzeitreihen und UART-Logs. Alle Quellen werden in ein einheitliches Frame-Format normiert, sodass dieselben Validierungsregeln über heterogene Dateneingaben hinweg ausgeführt werden können.",
+        "faq-q11": "Wie funktioniert der Validierungsoptimierungs-Loop?",
+        "faq-a11": "Die Plattform führt zunächst einen vollständigen Baseline-Durchlauf durch und erfasst Tests-Metriken — Fehlerrate, Ausführungszeit und Anforderungsabdeckung. Ein deterministischer Entscheidungs-Engine wählt dann aus, welche Validierungen erneut ausgeführt werden müssen. Der optimierte Durchlauf führt nur die ausgewählte Teilmenge aus und zielt auf 30–50 % Kostenreduktion bei erhaltener Fehlererkennung.",
+        "sol-opt-desc": "Ein metrikgesteuerter Optimierungs-Engine wählt automatisch aus, welche Validierungen erneut ausgeführt werden — mit dem Ziel, den Ausführungsaufwand um 30–50 % zu reduzieren und dabei die kritische Fehlererkennung zu erhalten.",
         "contact-title": "Kontakt aufnehmen",
         "contact-subtitle": "Direkte Kanäle — kein Formular, kein Umweg.",
         "contact-eng-label": "Engineering-Anfragen",
@@ -836,6 +896,12 @@
         "mod-engine-desc": "消除不确定性。我们的评估引擎确保每一项需求都能针对实时信号进行微秒级的精准验证。",
         "mod-integ-title": "需求溯源",
         "mod-integ-desc": "从信号级验证直接溯源至高层需求。每一个测试结果都有明确的行为根因。",
+        "mod-replay-title": "多源数据回放",
+        "mod-replay-desc": "通过统一适配器框架回放真实 CAN 日志、CSV 时间序列和 UART 数据。所有数据源使用同一归一化帧格式。",
+        "mod-optim-title": "验证优化引擎",
+        "mod-optim-desc": "基于指标的选择引擎自动决定哪些验证需要重新执行，目标是在保留关键缺陷检测能力的同时，将执行成本降低 30–50%。",
+        "mod-quality-title": "信号质量诊断",
+        "mod-quality-desc": "区分系统故障与数据质量问题。UNKNOWN 和 WEAK 判定可防止因信号过期或缺失而产生的误报。",
         "demo-title": "可执行需求演示",
         "demo-subtitle": "观察高层安全需求如何针对实时的跨信号行为进行验证。",
         "demo-input-source": "输入：自然语言需求 → 结构化 DSL 转换",
@@ -872,6 +938,11 @@
         "faq-a8": "系统将结构化的自然语言模式映射为确定性的 DSL 规则。重点不在于通用的 AI 理解，而在于精确、无歧义地转换为可执行的验证逻辑。",
         "faq-q9": "该系统是否依赖云端 AI 模型？",
         "faq-a9": "不依赖。该系统设计为在本地运行，使用受控的转换逻辑。这确保了确定性行为、可重复性，以及对安全关键环境的适用性。",
+        "faq-q10": "平台是否支持 CAN 日志或 UART 数据等真实硬件数据？",
+        "faq-a10": "支持。平台内置了 CAN candump 日志（含 DBC 解码）、CSV 信号时间序列和 UART 日志的回放适配器。所有数据源均归一化为统一的帧格式，使相同的验证规则可在异构数据输入下运行。",
+        "faq-q11": "验证优化循环是如何工作的？",
+        "faq-a11": "平台首先执行完整的基准运行并采集每个测试的指标——包括失败率、执行时间和需求覆盖率。确定性决策引擎随后选择哪些验证需要重新执行。优化运行仅执行选定的子集，目标是将执行成本降低 30–50%，同时保留对关键故障的检测能力。",
+        "sol-opt-desc": "基于指标的优化引擎自动选择需要重新执行的验证项——目标是将执行成本降低 30–50%，同时保留关键缺陷检测能力。",
         "contact-title": "联系我们",
         "contact-subtitle": "直接联系渠道 — 无表单，无中间环节。",
         "contact-eng-label": "工程咨询",
