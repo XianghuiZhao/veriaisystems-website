@@ -102,6 +102,16 @@
   // ── I18N ──────────────────────────────────────────────────────────────────────
   var translations = {
     en: {
+      // Legal Notice
+      "legal-document-title": "Legal Notice | VeriAI Systems",
+      "legal-label": "Legal",
+      "legal-title": "Legal Notice",
+      "legal-contact": "Contact",
+      "legal-email": "Email:",
+      "legal-home": "Back to Home",
+      "legal-initiative": "VeriAI Systems is an independent technology initiative focused on the development of advanced software verification and validation systems.",
+      "legal-product": "VeriCore.One is currently under active development. The platform is presented for research, technical exploration, and demonstration purposes.",
+
       // Nav
       'nav-platform': 'Platform',
       'nav-products': 'Products',
@@ -141,13 +151,13 @@
       'prod-tse-desc': 'Structured compliance test execution with full traceability to requirements. Audit-ready output for regulated industries.',
       // Footer
       'footer-tagline': "VeriCore.One \u00b7 Automotive Verification",
-      'footer-status': 'Prototype \u00b7 Active Development',
+      'footer-status': "Active Development",
       'footer-navigation': 'Navigation',
       'nav-language': 'Language',
       'footer-legal': 'Legal',
-      'footer-impressum': 'Impressum',
+      'footer-impressum': "Legal Notice",
       'footer-privacy': 'Privacy Policy',
-      'footer-legal-hint': 'This website presents a prototype engineering system under active development.',
+      'footer-legal-hint': "VeriCore.One \u2014 advancing software verification and validation.",
       // Platform page
       'plt-tag': 'Platform',
       'plt-title': "VeriCore.One \u2014 Automotive Verification",
@@ -249,6 +259,16 @@
       'future-note': 'The Engineering Validation suite is designed with a modular adapter architecture. Additional application domains can be introduced without restructuring the core validation engine or existing products.'
     },
     de: {
+      // Legal Notice
+      "legal-document-title": "Impressum | VeriAI Systems",
+      "legal-label": "Rechtliches",
+      "legal-title": "Impressum",
+      "legal-contact": "Kontakt",
+      "legal-email": "E-Mail:",
+      "legal-home": "Zur Startseite",
+      "legal-initiative": "VeriAI Systems ist eine unabh\u00e4ngige Technologieinitiative mit Schwerpunkt auf der Entwicklung fortschrittlicher Systeme zur Softwareverifikation und -validierung.",
+      "legal-product": "VeriCore.One befindet sich derzeit in aktiver Entwicklung. Die Plattform wird zu Forschungs-, technischen Erkundungs- und Demonstrationszwecken vorgestellt.",
+
       'nav-platform': 'Plattform',
       'nav-products': 'Produkte',
       'hero-tag': 'DETERMINISTISCHE VALIDIERUNG AKTIV',
@@ -282,13 +302,13 @@
       'prod-tse-title': 'TSE \u2014 Testsuite-Ausf\u00fchrung',
       'prod-tse-desc': 'Strukturierte Compliance-Testausf\u00fchrung mit vollst\u00e4ndiger R\u00fcckverfolgbarkeit zu Anforderungen.',
       'footer-tagline': "VeriCore.One \u00b7 Automotive-Verifikation",
-      'footer-status': 'Prototyp \u00b7 Aktive Entwicklung',
+      'footer-status': "Aktive Entwicklung",
       'footer-navigation': 'Navigation',
       'nav-language': 'Sprache',
       'footer-legal': 'Rechtliches',
-      'footer-impressum': 'Impressum',
+      'footer-impressum': "Impressum",
       'footer-privacy': 'Datenschutzerkl\u00e4rung',
-      'footer-legal-hint': 'Diese Website stellt ein Prototyp-Engineering-System in aktiver Entwicklung dar.',
+      'footer-legal-hint': "VeriCore.One \u2014 Weiterentwicklung der Softwareverifikation und -validierung.",
       // Platform page — DE
       'plt-tag': 'Plattform',
       'plt-title': "VeriCore.One \u2014 Automotive-Verifikation",
@@ -388,6 +408,16 @@
       'future-note': 'Die Engineering-Validierungssuite verwendet eine modulare Adapterarchitektur. Weitere Anwendungsdom\u00e4nen k\u00f6nnen hinzugef\u00fcgt werden, ohne die Kern-Validierungs-Engine oder bestehende Produkte umzustrukturieren.'
     },
     zh: {
+      // Legal Notice
+      "legal-document-title": "\u6cd5\u5f8b\u58f0\u660e | VeriAI Systems",
+      "legal-label": "\u6cd5\u5f8b\u4fe1\u606f",
+      "legal-title": "\u6cd5\u5f8b\u58f0\u660e",
+      "legal-contact": "\u8054\u7cfb\u65b9\u5f0f",
+      "legal-email": "\u7535\u5b50\u90ae\u7bb1\uff1a",
+      "legal-home": "\u8fd4\u56de\u9996\u9875",
+      "legal-initiative": "VeriAI Systems \u662f\u4e00\u4e2a\u72ec\u7acb\u6280\u672f\u7814\u53d1\u9879\u76ee\uff0c\u4e13\u6ce8\u4e8e\u5148\u8fdb\u8f6f\u4ef6\u9a8c\u8bc1\u4e0e\u786e\u8ba4\u7cfb\u7edf\u7684\u7814\u53d1\u3002",
+      "legal-product": "VeriCore.One \u76ee\u524d\u6b63\u5904\u4e8e\u79ef\u6781\u7814\u53d1\u9636\u6bb5\u3002\u672c\u5e73\u53f0\u7528\u4e8e\u7814\u7a76\u3001\u6280\u672f\u63a2\u7d22\u548c\u6f14\u793a\u3002",
+
       'nav-platform': '\u5e73\u53f0',
       'nav-products': '\u4ea7\u54c1',
       'hero-tag': '\u786e\u5b9a\u6027\u9a8c\u8bc1\u5f15\u64ce\u5df2\u6fc0\u6d3b',
@@ -421,13 +451,13 @@
       'prod-tse-title': 'TSE \u2014 \u6d4b\u8bd5\u5957\u4ef6\u6267\u884c',
       'prod-tse-desc': '\u7ed3\u6784\u5316\u5408\u89c4\u6d4b\u8bd5\u6267\u884c\uff0c\u5b8c\u6574\u8ffd\u6eaf\u81f3\u9700\u6c42\u3002\u9762\u5411\u53d7\u76d1\u7ba1\u884c\u4e1a\u7684\u5ba1\u8ba1\u5c31\u7eea\u8f93\u51fa\u3002',
       'footer-tagline': "VeriCore.One \u00b7 \u6c7d\u8f66\u7cfb\u7edf\u9a8c\u8bc1",
-      'footer-status': '\u539f\u578b \u00b7 \u79ef\u6781\u5f00\u53d1\u4e2d',
+      'footer-status': "\u79ef\u6781\u7814\u53d1\u4e2d",
       'footer-navigation': '\u5bfc\u822a',
       'nav-language': '\u8bed\u8a00',
       'footer-legal': '\u6cd5\u5f8b',
-      'footer-impressum': '\u6cd5\u5f8b\u58f0\u660e',
+      'footer-impressum': "\u6cd5\u5f8b\u58f0\u660e",
       'footer-privacy': '\u9690\u79c1\u653f\u7b56',
-      'footer-legal-hint': '\u672c\u7f51\u7ad9\u5c55\u793a\u7684\u662f\u4e00\u4e2a\u6b63\u5728\u79ef\u6781\u5f00\u53d1\u4e2d\u7684\u539f\u578b\u5de5\u7a0b\u7cfb\u7edf\u3002',
+      'footer-legal-hint': "VeriCore.One \u2014 \u63a8\u8fdb\u8f6f\u4ef6\u9a8c\u8bc1\u4e0e\u786e\u8ba4\u6280\u672f\u7684\u53d1\u5c55\u3002",
       // Platform page — ZH
       'plt-tag': '\u5e73\u53f0',
       'plt-title': "VeriCore.One \u2014 \u6c7d\u8f66\u7cfb\u7edf\u9a8c\u8bc1",
@@ -529,7 +559,9 @@
   };
 
   function applyTranslations(lang) {
-    var t = translations[lang] || translations.en;
+    lang = Object.prototype.hasOwnProperty.call(translations, lang) ? lang : 'en';
+    var t = translations[lang];
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
       if (t[key] !== undefined) el.textContent = t[key];

@@ -129,12 +129,12 @@ function Footer({ dark, onNavigate }) {
           <div>
             <Logo lightMode={!dark} />
             <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: fg3, marginTop: 10 }}>VeriCore.One · Automotive Verification</p>
-            <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: fg4, marginTop: 4 }}>Prototype · Active Development</p>
+            <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: fg4, marginTop: 4 }}>Active Development</p>
           </div>
           <div style={{ display: 'flex', gap: 48 }}>
             {[
               { title: 'Navigation', links: [['Platform', 'platform'], ['Products', 'products']] },
-              { title: 'Legal', links: [['Impressum', 'impressum'], ['Privacy Policy', 'privacy']] }
+              { title: 'Legal', links: [['Legal Notice', 'impressum'], ['Privacy Policy', 'privacy']] }
             ].map(col => (
               <div key={col.title}>
                 <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: fg4, textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: 12 }}>{col.title}</p>
@@ -151,7 +151,7 @@ function Footer({ dark, onNavigate }) {
         </div>
         <div style={{ borderTop: `1px solid ${border}`, paddingTop: 24, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
           <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: fg4 }}>© 2026 VeriAI Systems</p>
-          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: fg4 }}>This website presents a prototype engineering system under active development.</p>
+          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: fg4 }}>VeriCore.One — advancing software verification and validation.</p>
         </div>
       </div>
     </footer>
