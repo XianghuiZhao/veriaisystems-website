@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0f1a; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #475569; text-transform: uppercase; letter-spacing: .15em; margin-bottom: 6px; }
+  .divider { height: 1px; background: #1e293b; }
+
+  /* Status pill */
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 9999px; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; }
+  .pill-blue   { background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.2); color: #3b82f6; }
+  .pill-green  { background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2); color: #22c55e; }
+  .pill-red    { background: rgba(248,113,113,.08); border: 1px solid rgba(248,113,113,.2); color: #f87171; }
+  .pill-amber  { background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.2); color: #f59e0b; }
+  .pill-slate  { background: rgba(148,163,184,.08); border: 1px solid rgba(148,163,184,.2); color: #94a3b8; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .pulse { animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+  /* Domain tags */
+  .domain { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; }
+
+  /* Step badge */
+  .step-badge { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; color: #3b82f6; text-transform: uppercase; letter-spacing: .2em; }
+
+  /* Tag strip */
+  .tag-strip { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #334155; text-transform: uppercase; letter-spacing: .1em; }
+</style>
+</head>
+<body>
+  <div class="tag">Verdict Badges</div>
+  <div class="row">
+    <div class="pill pill-green"><span class="dot pulse"></span>PASS · STRONG</div>
+    <div class="pill pill-red"><span class="dot"></span>FAIL</div>
+    <div class="pill pill-amber"><span class="dot"></span>UNKNOWN</div>
+    <div class="pill pill-slate"><span class="dot"></span>WEAK</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="tag">Status Indicators</div>
+  <div class="row">
+    <div class="pill pill-blue"><span class="dot pulse"></span>DETERMINISTIC VALIDATION ACTIVE</div>
+    <div class="pill pill-slate">Prototype · Active Development</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="tag">Domain Chips</div>
+  <div class="row">
+    <div class="domain" style="background:rgba(59,130,246,.05);border:1px solid rgba(59,130,246,.2);color:#3b82f6;">Engineering Validation</div>
+    <div class="domain" style="background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.2);color:#f59e0b;">Compliance (Future)</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="tag">Step Numbers &amp; Micro Tags</div>
+  <div class="row">
+    <div class="step-badge">01 — Natural Language</div>
+    <div class="step-badge">02 — DSL</div>
+    <div class="step-badge">03 — Validation</div>
+  </div>
+  <div class="row">
+    <div class="tag-strip">CAN · UART · Live</div>
+    <div class="tag-strip">SIL · Model · Early Validation</div>
+    <div class="tag-strip">HIL · ECU · Hardware</div>
+  </div>
+</body>
+</html>

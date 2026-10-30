@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0f1a; padding: 16px 20px; font-family: 'JetBrains Mono', monospace; display: flex; flex-direction: column; gap: 14px; }
+  .tag { font-size: 9px; color: #3b82f6; text-transform: uppercase; letter-spacing: .2em; margin-bottom: 4px; }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .divider { height: 1px; background: #1e293b; }
+
+  /* Spacing swatches */
+  .sp-row { display: flex; gap: 4px; align-items: flex-end; }
+  .sp-block { background: #2563eb; border-radius: 2px; opacity: .8; }
+  .sp-label { font-size: 8px; color: #475569; text-align: center; margin-top: 4px; }
+
+  /* Radius showcase */
+  .radius-box { width: 40px; height: 40px; background: #1e293b; border: 1px solid #334155; }
+  .r0  { border-radius: 0; }
+  .r4  { border-radius: 4px; }
+  .r8  { border-radius: 8px; }
+  .r12 { border-radius: 12px; }
+  .rf  { border-radius: 9999px; width: 40px; height: 20px; margin-top: 10px; }
+  .rlabel { font-size: 8px; color: #475569; margin-top: 4px; text-align: center; }
+</style>
+</head>
+<body>
+  <div class="tag">Spacing Scale</div>
+  <div class="sp-row">
+    <div><div class="sp-block" style="width:4px; height:16px;"></div><div class="sp-label">4</div></div>
+    <div><div class="sp-block" style="width:8px; height:16px;"></div><div class="sp-label">8</div></div>
+    <div><div class="sp-block" style="width:12px; height:16px;"></div><div class="sp-label">12</div></div>
+    <div><div class="sp-block" style="width:16px; height:16px;"></div><div class="sp-label">16</div></div>
+    <div><div class="sp-block" style="width:20px; height:16px;"></div><div class="sp-label">20</div></div>
+    <div><div class="sp-block" style="width:24px; height:16px;"></div><div class="sp-label">24</div></div>
+    <div><div class="sp-block" style="width:32px; height:16px;"></div><div class="sp-label">32</div></div>
+    <div><div class="sp-block" style="width:40px; height:16px;"></div><div class="sp-label">40</div></div>
+    <div><div class="sp-block" style="width:48px; height:16px;"></div><div class="sp-label">48</div></div>
+    <div><div class="sp-block" style="width:64px; height:16px;"></div><div class="sp-label">64</div></div>
+    <div><div class="sp-block" style="width:80px; height:16px;"></div><div class="sp-label">80</div></div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="tag">Corner Radii</div>
+  <div class="row">
+    <div><div class="radius-box r0"></div><div class="rlabel">0px</div></div>
+    <div><div class="radius-box r4"></div><div class="rlabel">4px btn</div></div>
+    <div><div class="radius-box r8"></div><div class="rlabel">8px icon</div></div>
+    <div><div class="radius-box r12"></div><div class="rlabel">12px card</div></div>
+    <div><div class="radius-box rf"></div><div class="rlabel">pill</div></div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="tag">Borders (no shadows)</div>
+  <div class="row">
+    <div style="padding:8px 12px; border:1px solid #1e293b; border-radius:8px; font-size:10px; color:#64748b;">Default border</div>
+    <div style="padding:8px 12px; border:1px solid rgba(59,130,246,.4); border-radius:8px; font-size:10px; color:#94a3b8;">Hover border</div>
+    <div style="padding:8px 12px; border:1px solid rgba(59,130,246,.2); border-radius:8px; font-size:10px; color:#64748b; border-left:2px solid rgba(59,130,246,.3);">Left-accent</div>
+  </div>
+</body>
+</html>

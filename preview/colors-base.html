@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #111827; font-family: 'JetBrains Mono', monospace; padding: 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; }
+  .swatch { border-radius: 6px; overflow: hidden; }
+  .color-block { height: 44px; }
+  .info { padding: 6px 8px; background: #1e293b; }
+  .name { font-size: 9px; color: #94a3b8; text-transform: uppercase; letter-spacing: .1em; }
+  .hex  { font-size: 10px; color: #e2e8f0; font-weight: 700; margin-top: 2px; }
+  .section-label { font-size: 9px; color: #3b82f6; text-transform: uppercase; letter-spacing: .2em; margin: 12px 0 6px; }
+  .section-label:first-child { margin-top: 0; }
+</style>
+</head>
+<body>
+  <div class="section-label">Backgrounds</div>
+  <div class="grid">
+    <div class="swatch"><div class="color-block" style="background:#0a0f1a;border:1px solid #1e293b"></div><div class="info"><div class="name">BG Page</div><div class="hex">#0a0f1a</div></div></div>
+    <div class="swatch"><div class="color-block" style="background:#0f172a"></div><div class="info"><div class="name">BG Gate</div><div class="hex">#0f172a</div></div></div>
+    <div class="swatch"><div class="color-block" style="background:#1e293b"></div><div class="info"><div class="name">Surface</div><div class="hex">#1e293b</div></div></div>
+    <div class="swatch"><div class="color-block" style="background:#334155"></div><div class="info"><div class="name">Border Md</div><div class="hex">#334155</div></div></div>
+  </div>
+
+  <div class="section-label">Blue Scale</div>
+  <div class="grid">
+    <div class="swatch"><div class="color-block" style="background:#1d4ed8"></div><div class="info"><div class="name">Blue 700</div><div class="hex">#1d4ed8</div></div></div>
+    <div class="swatch"><div class="color-block" style="background:#2563eb"></div><div class="info"><div class="name">Blue 600</div><div class="hex">#2563eb</div></div></div>
+    <div class="swatch"><div class="color-block" style="background:#3b82f6"></div><div class="info"><div class="name">Blue 500</div><div class="hex">#3b82f6</div></div></div>
+    <div class="swatch"><div class="color-block" style="background:#60a5fa"></div><div class="info"><div class="name">Blue 400</div><div class="hex">#60a5fa</div></div></div>
+    <div class="swatch"><div class="color-block" style="background:rgba(59,130,246,0.1)"></div><div class="info"><div class="name">Blue Faint</div><div class="hex">b-500/10</div></div></div>
+  </div>
+
+  <div class="section-label">Text</div>
+  <div class="grid">
+    <div class="swatch"><div class="color-block" style="background:#f1f5f9"></div><div class="info"><div class="name">FG1</div><div class="hex">#f1f5f9</div></div></div>
+    <div class="swatch"><div class="color-block" style="background:#e2e8f0"></div><div class="info"><div class="name">FG2</div><div class="hex">#e2e8f0</div></div></div>
+    <div class="swatch"><div class="color-block" style="background:#94a3b8"></div><div class="info"><div class="name">FG3</div><div class="hex">#94a3b8</div></div></div>
+    <div class="swatch"><div class="color-block" style="background:#64748b"></div><div class="info"><div class="name">FG4</div><div class="hex">#64748b</div></div></div>
+    <div class="swatch"><div class="color-block" style="background:#334155"></div><div class="info"><div class="name">FG5</div><div class="hex">#334155</div></div></div>
+  </div>
+</body>
+</html>

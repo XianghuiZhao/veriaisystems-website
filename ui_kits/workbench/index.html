@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VeriCore Workbench — Engineering Desktop</title>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body, #root { height: 100%; overflow: hidden; background: #0a0f1a; }
+    body { -webkit-font-smoothing: antialiased; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+    @keyframes spin  { to { transform: rotate(360deg); } }
+    @keyframes blink { 50% { opacity: 0; } }
+    /* Custom scrollbars */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: #06090f; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    /* Resize handle */
+    .resize-handle-h { width: 4px; cursor: col-resize; background: transparent; flex-shrink: 0; transition: background .15s; }
+    .resize-handle-h:hover, .resize-handle-h.active { background: #2563eb44; }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="Toolbar.jsx"></script>
+<script type="text/babel" src="RuleExplorer.jsx"></script>
+<script type="text/babel" src="SignalCanvas.jsx"></script>
+<script type="text/babel" src="EvidencePanel.jsx"></script>
+<script type="text/babel" src="Console.jsx"></script>
+
+<script type="text/babel">
+const { useState, useRef, useEffect, useCallback } = React;
+
+// ── Resizable divider ────────────────────────────────────────────
+function ResizeHandle({ onDrag, vertical }) {
+  const [active, setActive] = useState(false);
+  const startRef = useRef(null);
+
+  function onMouseDown(e) {
+    e.preventDefault();
+    setActive(true);
+    startRef.current = vertical ? e.clientY : e.clientX;
+    function onMove(ev) {
+      const delta = (vertical ? ev.clientY : ev.clientX) - startRef.current;
+      startRef.current = vertical ? ev.clientY : ev.clientX;
+      onDrag(delta);
+    }
+    function onUp() {
+      setActive(false);
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseup', onUp);
+    }
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+  }
+
+  return (
+    <div
+      onMouseDown={onMouseDown}
+      className={`resize-handle-h${active ? ' active' : ''}`}
+      style={vertical
+        ? { height: 4, cursor: 'row-resize', background: active ? '#2563eb44' : 'transparent', flexShrink: 0, transition: 'background .15s' }
+        : { width: 4, cursor: 'col-resize', background: active ? '#2563eb44' : 'transparent', flexShrink: 0, transition: 'background .15s' }
+      }
+    />
+  );
+}
+
+// ── Stats helper ─────────────────────────────────────────────────
+function computeStats(rules) {
+  const all = rules.flatMap(g => g.rules);
+  return {
+    pass:    all.filter(r => r.status === 'PASS').length,
+    fail:    all.filter(r => r.status === 'FAIL').length,
+    unknown: all.filter(r => r.status === 'UNKNOWN').length,
+    pending: all.filter(r => r.status === 'PENDING').length,
+  };
+}
+
+// ── App ──────────────────────────────────────────────────────────
+function App() {
+  // Layout state
+  const [leftW,    setLeftW]    = useState(() => parseInt(localStorage.getItem('vb-leftW')  || '260'));
+  const [rightW,   setRightW]   = useState(() => parseInt(localStorage.getItem('vb-rightW') || '280'));
+  const [consoleH, setConsoleH] = useState(() => parseInt(localStorage.getItem('vb-conH')   || '160'));
+
+  // Theme
+  const [dark, setDark] = useState(() => localStorage.getItem('vb-dark') !== 'false');
+  function toggleDark() { setDark(d => { const next = !d; localStorage.setItem('vb-dark', String(next)); return next; }); }
+
+  // App state
+  const [rules,        setRules]        = useState(RULE_GROUPS);
+  const [selectedRule, setSelectedRule] = useState(null);
+  const [running,      setRunning]      = useState(false);
+  const [logs,         setLogs]         = useState(INITIAL_LOG);
+  const [playheadMs,   setPlayheadMs]   = useState(null);
+  const runTimerRef = useRef(null);
+  const runTimeoutsRef = useRef(new Set());
+  const runGenerationRef = useRef(0);
+
+  function clearRunCallbacks() {
+    runGenerationRef.current += 1;
+    if (runTimerRef.current !== null) cancelAnimationFrame(runTimerRef.current);
+    runTimerRef.current = null;
+    runTimeoutsRef.current.forEach(clearTimeout);
+    runTimeoutsRef.current.clear();
+  }
+
+  useEffect(() => clearRunCallbacks, []);
+
+  // Persist layout
+  useEffect(() => { localStorage.setItem('vb-leftW',  leftW);    }, [leftW]);
+  useEffect(() => { localStorage.setItem('vb-rightW', rightW);   }, [rightW]);
+  useEffect(() => { localStorage.setItem('vb-conH',   consoleH); }, [consoleH]);
+
+  const stats = computeStats(rules);
+
+  // ── Run validation ──────────────────────────────────────────
+  function startRun() {
+    if (running) return;
+    clearRunCallbacks();
+    const generation = runGenerationRef.current;
+    function schedule(callback, delay) {
+      const timer = setTimeout(() => {
+        runTimeoutsRef.current.delete(timer);
+        if (generation === runGenerationRef.current) callback();
+      }, delay);
+      runTimeoutsRef.current.add(timer);
+    }
+    setRunning(true);
+    setPlayheadMs(0);
+
+    // Reset all rules to RUNNING
+    setRules(prev => prev.map(g => ({
+      ...g,
+      rules: g.rules.map(r => ({ ...r, status: r.status === 'PENDING' ? 'PENDING' : 'RUNNING' }))
+    })));
+
+    // Add log entries progressively
+    RUN_LOG.forEach((entry, i) => {
+      schedule(() => {
+        const log = mkEntry(entry);
+        setLogs(prev => [...prev, log]);
+      }, i * 120);
+    });
+
+    // Animate playhead
+    const start = performance.now();
+    const totalDuration = 2400; // ms of animation
+    function animatePlayhead(now) {
+      if (generation !== runGenerationRef.current) return;
+      const elapsed = now - start;
+      const progress = Math.min(1, elapsed / totalDuration);
+      setPlayheadMs(Math.round(progress * 5000));
+      if (progress < 1) {
+        runTimerRef.current = requestAnimationFrame(animatePlayhead);
+      }
+    }
+    runTimerRef.current = requestAnimationFrame(animatePlayhead);
+
+    // Progressively reveal rule results
+    const FINAL_STATUSES = {
+      r1: 'PASS', r2: 'PASS', r3: 'UNKNOWN', r4: 'FAIL', r5: 'PASS',
+      r6: 'PASS', r7: 'PASS', r8: 'UNKNOWN',
+      r9: 'PASS', r10: 'PASS', r11: 'PENDING', r12: 'PENDING'
+    };
+
+    const ruleIds = Object.keys(FINAL_STATUSES);
+    ruleIds.forEach((id, i) => {
+      schedule(() => {
+        setRules(prev => prev.map(g => ({
+          ...g,
+          rules: g.rules.map(r => r.id === id ? { ...r, status: FINAL_STATUSES[id] } : r)
+        })));
+      }, 400 + i * 180);
+    });
+
+    // Finish
+    schedule(() => {
+      setRunning(false);
+      setPlayheadMs(null);
+    }, Math.max(totalDuration + 200, RUN_LOG.length * 120));
+  }
+
+  function stopRun() {
+    clearRunCallbacks();
+    setRules(prev => prev.map(g => ({
+      ...g,
+      rules: g.rules.map(r => r.status === 'RUNNING' ? { ...r, status: 'PENDING' } : r)
+    })));
+    setRunning(false);
+    setPlayheadMs(null);
+  }
+
+  function resetAll() {
+    stopRun();
+    setRules(RULE_GROUPS);
+    setLogs(INITIAL_LOG);
+    setSelectedRule(null);
+  }
+
+  return (
+    <div style={{
+      height: '100vh', display: 'flex', flexDirection: 'column',
+      background: dark ? '#0a0f1a' : '#f1f5f9', color: dark ? '#e2e8f0' : '#0f172a', overflow: 'hidden',
+      transition: 'background .2s, color .2s'
+    }}>
+      {/* Toolbar */}
+      <Toolbar running={running} onRun={startRun} onStop={stopRun} onReset={resetAll} stats={stats} dark={dark} onToggleDark={toggleDark} />
+
+      {/* Main workspace */}
+      <div style={{ flex: 1, display: 'flex', overflow: 'hidden', minHeight: 0 }}>
+
+        {/* Left: Rule Explorer */}
+        <RuleExplorer
+          selectedRule={selectedRule}
+          onSelectRule={setSelectedRule}
+          rules={rules}
+          panelWidth={leftW}
+          dark={dark}
+        />
+
+        <ResizeHandle onDrag={d => setLeftW(w => Math.max(180, Math.min(420, w + d)))} />
+
+        {/* Center: Signal Canvas */}
+        <SignalCanvas selectedRule={selectedRule} playheadMs={playheadMs} running={running} dark={dark} />
+
+        <ResizeHandle onDrag={d => setRightW(w => Math.max(200, Math.min(480, w - d)))} />
+
+        {/* Right: Evidence */}
+        <EvidencePanel selectedRule={selectedRule} panelWidth={rightW} dark={dark} />
+      </div>
+
+      {/* Bottom: Console */}
+      <ResizeHandle vertical onDrag={d => setConsoleH(h => Math.max(32, Math.min(400, h - d)))} />
+      <ConsolePane height={consoleH} logs={logs} onClear={() => setLogs([])} dark={dark} />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

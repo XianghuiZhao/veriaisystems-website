@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0f1a; padding: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #475569; text-transform: uppercase; letter-spacing: .15em; margin-bottom: 6px; }
+
+  /* Product card */
+  .card { padding: 18px; border: 1px solid #1e293b; border-radius: 12px; transition: border-color .2s; }
+  .card:hover { border-color: rgba(59,130,246,.4); background: rgba(59,130,246,.03); }
+  .icon-box { width: 32px; height: 32px; background: rgba(59,130,246,.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .icon-box svg { width: 14px; height: 14px; stroke: #3b82f6; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .card-title { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; }
+  .card-body  { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #64748b; line-height: 1.65; }
+  .card-tags  { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #334155; text-transform: uppercase; letter-spacing: .1em; margin-top: 10px; }
+
+  /* 3-col step card */
+  .step-card { padding: 18px; border: 1px solid #1e293b; border-radius: 12px; grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr 1fr; divide-x: 1px solid #1e293b; overflow: hidden; }
+  .step { padding: 0 16px; border-right: 1px solid #1e293b; }
+  .step:first-child { padding-left: 0; }
+  .step:last-child { border-right: none; }
+  .step-num { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; color: #3b82f6; text-transform: uppercase; letter-spacing: .2em; margin-bottom: 8px; }
+  .step-title { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; }
+  .step-desc  { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #64748b; line-height: 1.6; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon-box">
+      <svg viewBox="0 0 24 24"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+    </div>
+    <div class="card-title">Real-Time Signal Validation</div>
+    <div class="card-body">Validate live CAN and UART signals against DSL rules in real time.</div>
+    <div class="card-tags">CAN · UART · Live</div>
+  </div>
+
+  <div class="card">
+    <div class="icon-box">
+      <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8,21 16,21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    </div>
+    <div class="card-title">Simulation Validation</div>
+    <div class="card-body">Software-in-the-loop behavioral validation against DSL-defined specifications.</div>
+    <div class="card-tags">SIL · Model · Early Validation</div>
+  </div>
+
+  <div class="step-card">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Natural Language Requirements</div>
+      <div class="step-desc">Describe expected system behavior in plain language.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Structured DSL Transformation</div>
+      <div class="step-desc">Requirements parsed into deterministic DSL rules.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Deterministic Validation</div>
+      <div class="step-desc">Rules execute against real-world signal data.</div>
+    </div>
+  </div>
+</body>
+</html>

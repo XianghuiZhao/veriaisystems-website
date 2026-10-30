@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VeriAI Systems — UI Kit</title>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body, #root { height: 100%; }
+    body { -webkit-font-smoothing: antialiased; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+    @keyframes spin  { to { transform: rotate(360deg); } }
+    @keyframes blink { 50% { opacity: 0; } }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="Navbar.jsx"></script>
+  <script type="text/babel" src="Hero.jsx"></script>
+  <script type="text/babel" src="ProductsPage.jsx"></script>
+  <script type="text/babel" src="PlatformPage.jsx"></script>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    // ── Gate Screen ──────────────────────────────────────────────
+    function GateScreen({ onEnter }) {
+      const [val, setVal] = useState('');
+      const [err, setErr] = useState(false);
+
+      function attempt() {
+        if (val === 'veriaisystems2026') { onEnter(); }
+        else { setErr(true); setVal(''); setTimeout(() => setErr(false), 3000); }
+      }
+
+      return (
+        <div style={{
+          minHeight: '100vh', background: '#0f172a',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontFamily: "'JetBrains Mono', monospace"
+        }}>
+          <div style={{ width: '100%', maxWidth: 360, padding: '0 24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 32 }}>
+            <Logo size="lg" />
+            <p style={{ fontSize: 10, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.2em', textAlign: 'center' }}>
+              Restricted access — authorized users only
+            </p>
+            <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <input
+                type="password"
+                value={val}
+                onChange={e => setVal(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && attempt()}
+                placeholder="Access key"
+                autoFocus
+                style={{
+                  width: '100%', background: '#1e293b', border: `1px solid ${err ? '#f87171' : '#334155'}`,
+                  borderRadius: 6, padding: '12px 14px', fontFamily: 'inherit',
+                  fontSize: 14, color: '#e2e8f0', outline: 'none', letterSpacing: '0.1em',
+                  transition: 'border-color .15s'
+                }}
+              />
+              <button onClick={attempt} style={{
+                width: '100%', padding: 12, background: '#2563eb', color: '#fff',
+                border: 'none', borderRadius: 6, fontFamily: 'inherit', fontSize: 12,
+                fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer'
+              }}>Enter</button>
+              <p style={{ fontSize: 11, color: '#f87171', textAlign: 'center', minHeight: '1em', opacity: err ? 1 : 0, transition: 'opacity .2s', letterSpacing: '0.08em' }}>
+                Incorrect access key
+              </p>
+            </div>
+            <p style={{ fontSize: 10, color: '#1e293b' }}>VeriAI Systems · Prototype</p>
+          </div>
+        </div>
+      );
+    }
+
+    // ── App ──────────────────────────────────────────────────────
+    function App() {
+      const stored = localStorage.getItem('veriai-theme');
+      const [dark, setDark] = useState(stored ? stored === 'dark' : true);
+      const [page, setPage] = useState(() => {
+        const saved = localStorage.getItem('veriai-page');
+        const pages = ['gate', 'home', 'platform', 'products', 'product-realtime', 'product-sim', 'product-hil', 'product-log'];
+        return pages.includes(saved) ? saved : 'gate';
+      });
+
+      function navigate(p) {
+        if (p === 'impressum' || p === 'privacy') {
+          window.location.assign(`../../${p}.html`);
+          return;
+        }
+        setPage(p);
+        localStorage.setItem('veriai-page', p);
+        window.scrollTo({ top: 0 });
+      }
+
+      function toggleDark() {
+        const next = !dark;
+        setDark(next);
+        localStorage.setItem('veriai-theme', next ? 'dark' : 'light');
+      }
+
+      const bg   = dark ? '#0a0f1a' : '#fff';
+      const fg   = dark ? '#e2e8f0' : '#0f172a';
+
+      useEffect(() => {
+        document.body.style.background = bg;
+        document.body.style.color = fg;
+        document.body.style.transition = 'background .2s, color .2s';
+      }, [dark]);
+
+      if (page === 'gate') return <GateScreen onEnter={() => navigate('home')} />;
+
+      return (
+        <div style={{ minHeight: '100vh', background: bg, color: fg, transition: 'background .2s, color .2s' }}>
+          <Navbar page={page} onNavigate={navigate} dark={dark} onToggleDark={toggleDark} />
+          {page === 'home'     && <><Hero dark={dark} onNavigate={navigate} /><Footer dark={dark} onNavigate={navigate} /></>}
+          {page === 'platform' && <><PlatformPage dark={dark} onNavigate={navigate} /><Footer dark={dark} onNavigate={navigate} /></>}
+          {page === 'products' && <><ProductsPage dark={dark} onNavigate={navigate} /><Footer dark={dark} onNavigate={navigate} /></>}
+          {/* Product detail placeholder */}
+          {page.startsWith('product-') && (
+            <main style={{ paddingTop: 56 }}>
+              <div style={{ maxWidth: 896, margin: '0 auto', padding: '80px 24px', textAlign: 'center' }}>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: 16 }}>Product Detail</p>
+                <h1 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: 28, color: dark ? '#f1f5f9' : '#0f172a', marginBottom: 16, letterSpacing: '-0.025em' }}>
+                  {page === 'product-realtime' && 'Real-Time Signal Validation'}
+                  {page === 'product-sim'      && 'Simulation Validation'}
+                  {page === 'product-hil'      && 'HIL Testing'}
+                  {page === 'product-log'      && 'Log Replay & Analysis'}
+                </h1>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#64748b', marginBottom: 32 }}>Product detail page — placeholder in this kit.</p>
+                <button onClick={() => navigate('products')} style={{
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#3b82f6',
+                  background: 'none', border: '1px solid rgba(59,130,246,0.3)', borderRadius: 4,
+                  padding: '8px 16px', cursor: 'pointer'
+                }}>← Back to Products</button>
+              </div>
+              <Footer dark={dark} onNavigate={navigate} />
+            </main>
+          )}
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

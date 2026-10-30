@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0f1a; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+
+  .row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #475569; text-transform: uppercase; letter-spacing: .15em; margin-bottom: 8px; }
+  .divider { height: 1px; background: #1e293b; }
+
+  /* Logo on dark */
+  .logo { display: flex; align-items: center; gap: 8px; }
+  .mark { background: #2563eb; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .mark svg { stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .wordmark { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #f1f5f9; }
+  .wordmark span { color: #3b82f6; }
+
+  /* Light bg version */
+  .light-bg { background: #fff; border-radius: 8px; padding: 12px 18px; display: inline-flex; }
+  .wordmark-light { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #0f172a; }
+  .wordmark-light span { color: #2563eb; }
+</style>
+</head>
+<body>
+
+  <div class="tag">Logo — Dark Background</div>
+  <div class="row">
+    <!-- Large -->
+    <div class="logo">
+      <div class="mark" style="width:40px;height:40px;">
+        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      </div>
+      <div class="wordmark" style="font-size:16px; letter-spacing:.12em; text-transform:uppercase;">VeriAI <span>Systems</span></div>
+    </div>
+    <!-- Medium -->
+    <div class="logo">
+      <div class="mark" style="width:28px;height:28px;">
+        <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      </div>
+      <div class="wordmark" style="font-size:13px; letter-spacing:.1em;">VeriAI <span>Systems</span></div>
+    </div>
+    <!-- Small -->
+    <div class="logo">
+      <div class="mark" style="width:22px;height:22px;border-radius:3px;">
+        <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      </div>
+      <div class="wordmark" style="font-size:11px; letter-spacing:.08em;">VeriAI <span>Systems</span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="tag">Logo — Light Background</div>
+  <div class="row">
+    <div class="light-bg">
+      <div class="logo">
+        <div class="mark" style="width:28px;height:28px;">
+          <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <div class="wordmark-light" style="font-size:13px; letter-spacing:.1em;">VeriAI <span>Systems</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="tag">Logomark Only</div>
+  <div class="row">
+    <div class="mark" style="width:48px;height:48px;border-radius:8px;">
+      <svg width="26" height="26" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+    </div>
+    <div class="mark" style="width:32px;height:32px;border-radius:6px;">
+      <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+    </div>
+    <div class="mark" style="width:20px;height:20px;border-radius:4px;">
+      <svg width="11" height="11" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+    </div>
+  </div>
+
+</body>
+</html>

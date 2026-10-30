@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0f1a; font-family: 'JetBrains Mono', monospace; padding: 16px; }
+  .row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+  .chip { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; border: 1px solid #1e293b; min-width: 150px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .label { font-size: 10px; color: #e2e8f0; letter-spacing: .05em; }
+  .sub   { font-size: 9px; color: #475569; margin-top: 1px; }
+  .section-label { font-size: 9px; color: #3b82f6; text-transform: uppercase; letter-spacing: .2em; margin: 12px 0 6px; }
+  .section-label:first-child { margin-top: 0; }
+
+  .verdict { display: flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 8px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-right: 8px; }
+  .pass    { background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2); color: #22c55e; }
+  .fail    { background: rgba(248,113,113,.08); border: 1px solid rgba(248,113,113,.2); color: #f87171; }
+  .unknown { background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.2); color: #f59e0b; }
+  .weak    { background: rgba(148,163,184,.08); border: 1px solid rgba(148,163,184,.2); color: #94a3b8; }
+
+  .domain-row { display: flex; gap: 8px; }
+  .domain { padding: 8px 14px; border-radius: 8px; font-size: 10px; letter-spacing: .1em; font-weight: 700; text-transform: uppercase; }
+  .eng  { background: rgba(59,130,246,.05); border: 1px solid rgba(59,130,246,.2); color: #3b82f6; }
+  .comp { background: rgba(245,158,11,.05); border: 1px solid rgba(245,158,11,.2); color: #f59e0b; }
+</style>
+</head>
+<body>
+  <div class="section-label">Verdict States</div>
+  <div class="row">
+    <div class="verdict pass">● PASS</div>
+    <div class="verdict fail">● FAIL</div>
+    <div class="verdict unknown">● UNKNOWN</div>
+    <div class="verdict weak">● WEAK</div>
+  </div>
+
+  <div class="section-label">Domain Colors</div>
+  <div class="domain-row">
+    <div class="domain eng">Engineering Validation</div>
+    <div class="domain comp">Compliance (Future)</div>
+  </div>
+
+  <div class="section-label">DSL Syntax</div>
+  <div style="background:#0f172a; border:1px solid #1e293b; border-radius:8px; padding:12px 14px; font-size:12px; line-height:1.8;">
+    <span style="color:#a78bfa; font-weight:700;">RULE</span>
+    <span style="color:#93c5fd;"> "Emergency_Response"</span><br>
+    <span style="color:#a78bfa; font-weight:700;">IF</span>
+    <span style="color:#e2e8f0;"> vehicle_speed &gt; 30.0</span><br>
+    <span style="color:#fcd34d; font-weight:700;">&nbsp;&nbsp;ASSERT</span>
+    <span style="color:#e2e8f0;"> brake_pressure &gt; 80.0</span><br>
+    <span style="color:#fcd34d; font-weight:700;">&nbsp;&nbsp;WITHIN</span>
+    <span style="color:#e2e8f0;"> 150ms</span><br>
+    <span style="color:#a78bfa; font-weight:700;">END</span>
+  </div>
+</body>
+</html>

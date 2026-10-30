@@ -1,0 +1,266 @@
+/* VeriAI Systems — Design Tokens
+   Source: https://github.com/XianghuiZhao/veriaisystems-website
+   ------------------------------------------------------------------ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* ── FONTS ──────────────────────────────────────────────────────── */
+:root {
+  --font-sans:  'Inter', sans-serif;
+  --font-mono:  'JetBrains Mono', 'Courier New', monospace;
+}
+
+/* ── BASE COLOR PALETTE ─────────────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --color-bg-page:        #0a0f1a;   /* primary dark bg */
+  --color-bg-gate:        #0f172a;   /* login / gate screen */
+  --color-bg-surface:     #1e293b;   /* raised surface (dark) */
+  --color-bg-subtle:      #0f172a;   /* subtle section alt */
+
+  /* Borders */
+  --color-border:         #1e293b;   /* dark mode border (slate-800) */
+  --color-border-light:   #e2e8f0;   /* light mode border (slate-200) */
+  --color-border-medium:  #334155;   /* mid border (slate-700) */
+  --color-divide:         #1e293b;   /* section dividers */
+
+  /* Text */
+  --color-text-primary:   #e2e8f0;   /* slate-200 — main body dark */
+  --color-text-secondary: #94a3b8;   /* slate-400 — secondary */
+  --color-text-muted:     #64748b;   /* slate-500 — captions, descriptions */
+  --color-text-ghost:     #334155;   /* slate-700 — very muted / decorative */
+  --color-text-inverse:   #0f172a;   /* on light bg */
+  --color-text-light:     #f1f5f9;   /* slate-100 — headings on dark */
+
+  /* Brand Blue */
+  --color-blue-600:       #2563eb;   /* primary action */
+  --color-blue-500:       #3b82f6;   /* hover / accent */
+  --color-blue-400:       #60a5fa;   /* light accents on dark */
+  --color-blue-700:       #1d4ed8;   /* active/pressed */
+  --color-blue-faint:     rgba(59, 130, 246, 0.10);  /* icon bg */
+  --color-blue-faint-border: rgba(59, 130, 246, 0.20);
+
+  /* Domain Colors */
+  --color-domain-engineering:     #3b82f6;   /* blue-500 */
+  --color-domain-compliance:      #f59e0b;   /* amber-500 */
+  --color-domain-engineering-bg:  rgba(59, 130, 246, 0.05);
+  --color-domain-compliance-bg:   rgba(245, 158, 11, 0.05);
+
+  /* Status / Verdicts */
+  --color-pass:           #22c55e;   /* green-500 */
+  --color-pass-bg:        rgba(34, 197, 94, 0.08);
+  --color-pass-border:    rgba(34, 197, 94, 0.20);
+  --color-fail:           #f87171;   /* red-400 */
+  --color-fail-bg:        rgba(248, 113, 113, 0.08);
+  --color-unknown:        #f59e0b;   /* amber-500 */
+  --color-unknown-bg:     rgba(245, 158, 11, 0.08);
+  --color-weak:           #94a3b8;   /* slate-400 */
+
+  /* DSL Syntax Highlighting */
+  --color-dsl-keyword:    #a78bfa;   /* purple-400 — RULE, IF, THEN, END */
+  --color-dsl-string:     #93c5fd;   /* blue-300 — string values */
+  --color-dsl-assert:     #fcd34d;   /* yellow-300 — ASSERT, WITHIN */
+  --color-dsl-error:      #f87171;   /* red-400 — TRUE/FALSE flags */
+  --color-dsl-comment:    #6d7fcc;   /* italic comment color */
+  --color-dsl-lineno:     #334155;   /* line numbers */
+}
+
+/* ── SEMANTIC COLOR TOKENS ──────────────────────────────────────── */
+:root {
+  --fg1:          var(--color-text-light);      /* primary heading text */
+  --fg2:          var(--color-text-primary);    /* body text */
+  --fg3:          var(--color-text-secondary);  /* secondary text */
+  --fg4:          var(--color-text-muted);      /* captions */
+  --fg5:          var(--color-text-ghost);      /* decorative / very muted */
+
+  --bg1:          var(--color-bg-page);         /* page background */
+  --bg2:          var(--color-bg-gate);         /* surface background */
+  --bg3:          var(--color-bg-surface);      /* raised surface */
+
+  --accent:       var(--color-blue-600);        /* primary CTA */
+  --accent-hover: var(--color-blue-500);        /* CTA hover */
+  --accent-press: var(--color-blue-700);        /* CTA press */
+  --accent-faint: var(--color-blue-faint);      /* icon container bg */
+
+  --border:       var(--color-border);          /* default border */
+  --border-hover: rgba(59, 130, 246, 0.40);     /* hover border */
+
+  --verdict-pass:    var(--color-pass);
+  --verdict-fail:    var(--color-fail);
+  --verdict-unknown: var(--color-unknown);
+}
+
+/* ── TYPE SCALE ─────────────────────────────────────────────────── */
+:root {
+  /* Size scale */
+  --text-2xs:  0.625rem;    /* 10px — labels, tags */
+  --text-xs:   0.75rem;     /* 12px — body copy, captions */
+  --text-sm:   0.875rem;    /* 14px — emphasized body, card titles */
+  --text-base: 1rem;        /* 16px — nav, standard body */
+  --text-lg:   1.125rem;    /* 18px — sub-headings */
+  --text-xl:   1.25rem;     /* 20px — section sub-titles */
+  --text-2xl:  1.5rem;      /* 24px — section headings */
+  --text-3xl:  1.875rem;    /* 30px — page headings */
+  --text-4xl:  2.25rem;     /* 36px — hero headings */
+  --text-5xl:  3rem;        /* 48px — hero (desktop) */
+
+  /* Weight */
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold:600;
+  --weight-bold:    700;
+  --weight-black:   800;
+
+  /* Tracking */
+  --tracking-tight:   -0.025em;
+  --tracking-normal:   0;
+  --tracking-wide:     0.05em;
+  --tracking-wider:    0.1em;
+  --tracking-widest:   0.2em;      /* labels */
+}
+
+/* ── SEMANTIC TYPE ROLES ────────────────────────────────────────── */
+:root {
+  /* Display heading — hero titles */
+  --type-display-family:   var(--font-sans);
+  --type-display-size:     var(--text-4xl);
+  --type-display-weight:   var(--weight-black);
+  --type-display-tracking: var(--tracking-tight);
+  --type-display-leading:  1.15;
+
+  /* Section heading */
+  --type-h2-family:   var(--font-sans);
+  --type-h2-size:     var(--text-2xl);
+  --type-h2-weight:   var(--weight-black);
+  --type-h2-tracking: var(--tracking-tight);
+
+  /* Card title / sub-heading */
+  --type-h3-family:   var(--font-sans);
+  --type-h3-size:     var(--text-sm);
+  --type-h3-weight:   var(--weight-bold);
+  --type-h3-tracking: var(--tracking-normal);
+
+  /* Section label (tag above heading) */
+  --type-label-family:   var(--font-mono);
+  --type-label-size:     var(--text-2xs);
+  --type-label-weight:   var(--weight-bold);
+  --type-label-tracking: var(--tracking-widest);
+  --type-label-transform: uppercase;
+
+  /* Body copy */
+  --type-body-family:   var(--font-mono);
+  --type-body-size:     var(--text-xs);
+  --type-body-weight:   var(--weight-regular);
+  --type-body-leading:  1.65;
+
+  /* Code / DSL */
+  --type-code-family:   var(--font-mono);
+  --type-code-size:     var(--text-sm);
+  --type-code-weight:   var(--weight-regular);
+  --type-code-leading:  1.7;
+
+  /* Caption / micro */
+  --type-caption-family:   var(--font-mono);
+  --type-caption-size:     0.6875rem;   /* 11px */
+  --type-caption-weight:   var(--weight-regular);
+  --type-caption-tracking: var(--tracking-wide);
+}
+
+/* ── SEMANTIC ELEMENT STYLES ────────────────────────────────────── */
+.vrs-label {
+  font-family: var(--type-label-family);
+  font-size:   var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+  text-transform: var(--type-label-transform);
+  color: var(--color-blue-500);
+}
+
+.vrs-h1 {
+  font-family:    var(--type-display-family);
+  font-size:      var(--type-display-size);
+  font-weight:    var(--type-display-weight);
+  letter-spacing: var(--type-display-tracking);
+  line-height:    var(--type-display-leading);
+  color:          var(--fg1);
+  text-wrap: balance;
+}
+
+.vrs-h2 {
+  font-family:    var(--type-h2-family);
+  font-size:      var(--type-h2-size);
+  font-weight:    var(--type-h2-weight);
+  letter-spacing: var(--type-h2-tracking);
+  color:          var(--fg1);
+  text-wrap: balance;
+}
+
+.vrs-h3 {
+  font-family:    var(--type-h3-family);
+  font-size:      var(--type-h3-size);
+  font-weight:    var(--type-h3-weight);
+  color:          var(--fg1);
+}
+
+.vrs-body {
+  font-family: var(--type-body-family);
+  font-size:   var(--type-body-size);
+  font-weight: var(--type-body-weight);
+  line-height: var(--type-body-leading);
+  color:       var(--fg4);
+}
+
+.vrs-code {
+  font-family: var(--type-code-family);
+  font-size:   var(--type-code-size);
+  line-height: var(--type-code-leading);
+}
+
+/* ── SPACING SCALE ──────────────────────────────────────────────── */
+:root {
+  --space-1:  0.25rem;   /* 4px */
+  --space-2:  0.5rem;    /* 8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-8:  2rem;      /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px — section vertical padding */
+  --space-28: 7rem;      /* 112px — page top padding (below nav) */
+}
+
+/* ── BORDER RADIUS ──────────────────────────────────────────────── */
+:root {
+  --radius-sm:   0.25rem;   /* 4px — buttons */
+  --radius-md:   0.5rem;    /* 8px — icon containers */
+  --radius-lg:   0.75rem;   /* 12px — cards, panels (rounded-xl) */
+  --radius-full: 9999px;    /* pills, status dots */
+}
+
+/* ── ANIMATION ──────────────────────────────────────────────────── */
+:root {
+  --duration-fast:   150ms;
+  --duration-base:   200ms;
+  --duration-slow:   300ms;
+  --easing-default:  ease;
+  --easing-out:      ease-out;
+}
+
+@keyframes vrs-blink {
+  50% { opacity: 0; }
+}
+@keyframes vrs-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.vrs-cursor-blink {
+  animation: vrs-blink 1s step-end infinite;
+}
+.vrs-signal-draw {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: vrs-draw 2s ease forwards;
+}
