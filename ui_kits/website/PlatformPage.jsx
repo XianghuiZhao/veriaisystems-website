@@ -314,8 +314,8 @@ function PlatformPage({ dark, onNavigate }) {
           <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: dark ? '#334155' : '#94a3b8', marginBottom: 36 }}>Direct channels — no forms, no intermediaries.</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, maxWidth: 600 }}>
             {[
-              { label: 'Engineering inquiries', desc: 'Technical questions, validation system, DSL, integration.', email: 'engineering@veriai-systems.com' },
-              { label: 'General inquiries', desc: 'Partnerships, early access requests, general information.', email: 'info@veriai-systems.com' }
+              { label: 'Engineering inquiries', desc: 'Technical questions, validation system, DSL, integration.', email: 'vericore.dev@gmail.com' },
+              { label: 'General inquiries', desc: 'Partnerships, early access requests, general information.', email: 'vericore.dev@gmail.com' }
             ].map((c, i) => (
               <div key={i} style={{ padding: 20, border: `1px solid ${border}`, borderRadius: 12, background: dark ? 'rgba(15,23,42,0.3)' : '#f8fafc' }}>
                 <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: i === 0 ? '#3b82f6' : (dark ? '#475569' : '#94a3b8'), textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: 8 }}>{c.label}</p>
